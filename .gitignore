@@ -1,3 +1,6 @@
 
 # Vim
 .vimrc
+
+# Python files
+*.pyc
