@@ -25,24 +25,13 @@ class MedlineArticle:
         self.category_ids = category_ids
 
 
-class DMozOntology:
-
-    def __init__(self, topics):
-        self.topics = topics
-
-    def getXml(self):
-        root = etree.Element('RDF', nsmap=DMOZ_NS_MAP)
-        for topic in self.topics:
-            topic.writeToXml(root)
-        return root
-
-
 class DMozPage:
 
-    def __init__(self, url, title, description, topic_name):
+    def __init__(self, url, title, description, topic_id, topic_name):
         self.url = url
         self.title = title
         self.description = description
+        self.topic_id = str(topic_id)
         self.topic_name = topic_name
 
     def writeToXml(self, root):
@@ -68,17 +57,29 @@ class DMozPage:
 
 class DMozTopic:
 
-    def __init__(self, category_id, category_name, pages):
-        self.category_id = category_id
-        self.category_name = category_name
+    def __init__(self, topic_id, path_name, output_name, pages):
+        self.topic_id = str(topic_id)
+        self.path_name = path_name
+        self.output_name = output_name
         self.pages = pages
+
+        self._subtopic_map = {}
+
+    def addSubtopic(self, subtopic):
+        self._subtopic_map[subtopic.path_name] = subtopic
+
+    def getSubtopicByName(self, path_name):
+        return self._subtopic_map[path_name]
+
+    def addPage(self, page):
+        self.pages.append(page)
 
     def writeToXml(self, root):
         topic_el = etree.Element('Topic')
-        topic_el.set(DMOZ_RDF + 'id', self.category_name)
+        topic_el.set(DMOZ_RDF + 'id', self.output_name)
 
         catid_el = etree.Element('catid')
-        catid_el.text = self.category_id
+        catid_el.text = self.topic_id
 
         topic_el.append(catid_el)
 
@@ -96,3 +97,55 @@ class DMozTopic:
                 page_el.append(priority_el)
 
             root.append(page_el)
+
+        for subtopic in self._subtopic_map.values():
+            subtopic.writeToXml(root)
+
+
+class DMozOntology:
+
+    def __init__(self):
+        self._topic_map = {}
+        self._root_topic = DMozTopic(1, '', '', [])
+
+        self._root_topic.addSubtopic(DMozTopic(2, 'Top', 'Top/World', []))
+
+    def addPage(self, page):
+        topic_id = page.topic_id
+        topic_name = page.topic_name
+
+        if not self.topicExists(topic_id):
+            raise ValueError('Topic `' + topic_name + '` does not exist!')
+            # self._createTopic(topic_id, topic_name)
+
+        topic = self.getTopic(topic_id)
+        topic.addPage(page)
+
+    def getTopic(self, topic_id):
+        return self._topic_map[topic_id]
+
+    def topicExists(self, topic_id):
+        return topic_id in self._topic_map
+
+    def defineTopic(self, topic_id, topic_name):
+        if self.topicExists(topic_id):
+            return
+
+        topic_path = topic_name.split('/')
+
+        parent_topic = self._root_topic
+        for name_part in topic_path[0:-1]:
+            parent_topic = parent_topic.getSubtopicByName(name_part)
+
+        topic = DMozTopic(topic_id, topic_path[-1], topic_name, [])
+        parent_topic.addSubtopic(topic)
+        self._topic_map[topic_id] = topic
+
+    def getContentXml(self):
+        root = etree.Element('RDF', nsmap=DMOZ_NS_MAP)
+
+        topic = self._root_topic
+        topic.writeToXml(root)
+        # for topic in self.topics:
+        #     topic.writeToXml(root)
+        return root
