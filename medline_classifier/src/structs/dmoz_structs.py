@@ -16,15 +16,6 @@ DMOZ_NS_MAP = {
 }
 
 
-class MedlineArticle:
-
-    def __init__(self, pmid, title, abstract, category_ids):
-        self.pmid = pmid
-        self.title = title
-        self.abstract = abstract
-        self.category_ids = category_ids
-
-
 class DMozPage:
 
     def __init__(self, url, title, description, topic_id, topic_name):

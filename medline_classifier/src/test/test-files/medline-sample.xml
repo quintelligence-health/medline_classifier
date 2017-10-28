@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE PubmedArticleSet SYSTEM "http://dtd.nlm.nih.gov/ncbi/pubmed/out/pubmed_170101.dtd">
+<PubmedArticleSet>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+      <PMID Version="1">14666039</PMID>
+      <DateCreated>
+        <Year>2003</Year>
+        <Month>12</Month>
+        <Day>10</Day>
+      </DateCreated>
+      <DateCompleted>
+        <Year>2004</Year>
+        <Month>01</Month>
+        <Day>14</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2006</Year>
+        <Month>11</Month>
+        <Day>15</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0022-5223</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>126</Volume>
+            <Issue>5</Issue>
+            <PubDate>
+              <Year>2003</Year>
+              <Month>Nov</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>The Journal of thoracic and cardiovascular surgery</Title>
+          <ISOAbbreviation>J. Thorac. Cardiovasc. Surg.</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Resection of multifocal non-small cell lung cancer when the bronchioloalveolar subtype is involved.</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>1597-602</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText Label="OBJECTIVE" NlmCategory="OBJECTIVE">Abstract 1 1!</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">Abstract 1 2!</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Abstract 1 3!</AbstractText>
+          <AbstractText Label="CONCLUSIONS" NlmCategory="CONCLUSIONS">Abstract 1 4!</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Roberts</LastName>
+            <ForeName>Peter F</ForeName>
+            <Initials>PF</Initials>
+            <AffiliationInfo>
+              <Affiliation>Division of Cardiothoracic Surgery, University California, Davis Medical Center, Sacramento, 95817, USA. peter.roberts@ucdmc.ucdavis.edu</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Straznicka</LastName>
+            <ForeName>Michaela</ForeName>
+            <Initials>M</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Lara</LastName>
+            <ForeName>Primo N</ForeName>
+            <Initials>PN</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Lau</LastName>
+            <ForeName>Derrick H</ForeName>
+            <Initials>DH</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Follette</LastName>
+            <ForeName>David M</ForeName>
+            <Initials>DM</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Gandara</LastName>
+            <ForeName>David R</ForeName>
+            <Initials>DR</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Benfield</LastName>
+            <ForeName>John R</ForeName>
+            <Initials>JR</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D003160">Comparative Study</PublicationType>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>J Thorac Cardiovasc Surg</MedlineTA>
+        <NlmUniqueID>0376343</NlmUniqueID>
+        <ISSNLinking>0022-5223</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>AIM</CitationSubset>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D002282" MajorTopicYN="N">Adenocarcinoma, Bronchiolo-Alveolar</DescriptorName>
+          <QualifierName UI="Q000401" MajorTopicYN="N">mortality</QualifierName>
+          <QualifierName UI="Q000473" MajorTopicYN="Y">pathology</QualifierName>
+          <QualifierName UI="Q000601" MajorTopicYN="Y">surgery</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000368" MajorTopicYN="N">Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000369" MajorTopicYN="N">Aged, 80 and over</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D001707" MajorTopicYN="N">Biopsy, Needle</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002289" MajorTopicYN="N">Carcinoma, Non-Small-Cell Lung</DescriptorName>
+          <QualifierName UI="Q000401" MajorTopicYN="N">mortality</QualifierName>
+          <QualifierName UI="Q000473" MajorTopicYN="Y">pathology</QualifierName>
+          <QualifierName UI="Q000601" MajorTopicYN="Y">surgery</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015331" MajorTopicYN="N">Cohort Studies</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005500" MajorTopicYN="N">Follow-Up Studies</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007150" MajorTopicYN="N">Immunohistochemistry</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008175" MajorTopicYN="N">Lung Neoplasms</DescriptorName>
+          <QualifierName UI="Q000401" MajorTopicYN="N">mortality</QualifierName>
+          <QualifierName UI="Q000473" MajorTopicYN="Y">pathology</QualifierName>
+          <QualifierName UI="Q000601" MajorTopicYN="Y">surgery</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008875" MajorTopicYN="N">Middle Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009367" MajorTopicYN="N">Neoplasm Staging</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011013" MajorTopicYN="N">Pneumonectomy</DescriptorName>
+          <QualifierName UI="Q000379" MajorTopicYN="N">methods</QualifierName>
+          <QualifierName UI="Q000401" MajorTopicYN="N">mortality</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011336" MajorTopicYN="N">Probability</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012189" MajorTopicYN="N">Retrospective Studies</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018570" MajorTopicYN="N">Risk Assessment</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018709" MajorTopicYN="N">Statistics, Nonparametric</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D016019" MajorTopicYN="N">Survival Analysis</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D016896" MajorTopicYN="N">Treatment Outcome</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>11</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2004</Year>
+          <Month>1</Month>
+          <Day>15</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>11</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">14666039</ArticleId>
+        <ArticleId IdType="doi">10.1016/S0022</ArticleId>
+        <ArticleId IdType="pii">S0022-5223(03)01280-7</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+      <PMID Version="1">14666041</PMID>
+      <DateCreated>
+        <Year>2003</Year>
+        <Month>12</Month>
+        <Day>10</Day>
+      </DateCreated>
+      <DateCompleted>
+        <Year>2004</Year>
+        <Month>01</Month>
+        <Day>14</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2013</Year>
+        <Month>11</Month>
+        <Day>21</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0022-5223</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>126</Volume>
+            <Issue>5</Issue>
+            <PubDate>
+              <Year>2003</Year>
+              <Month>Nov</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>The Journal of thoracic and cardiovascular surgery</Title>
+          <ISOAbbreviation>J. Thorac. Cardiovasc. Surg.</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Cisplatin augments cytotoxic T-lymphocyte-mediated antitumor immunity in poorly immunogenic murine lung cancer.</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>1609-17</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText Label="OBJECTIVE" NlmCategory="OBJECTIVE">Abstract 2 1!</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">Abstract 2 2!</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Abstract 2 3!</AbstractText>
+          <AbstractText Label="CONCLUSION" NlmCategory="CONCLUSIONS">Abstract 2 4!</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Merritt</LastName>
+            <ForeName>Robert E</ForeName>
+            <Initials>RE</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Cardiothoracic Surgery, Weill Medical College of Cornell University, New York, NY 10021, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Mahtabifard</LastName>
+            <ForeName>Ali</ForeName>
+            <Initials>A</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Yamada</LastName>
+            <ForeName>Reiko E</ForeName>
+            <Initials>RE</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Crystal</LastName>
+            <ForeName>Ronald G</ForeName>
+            <Initials>RG</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Korst</LastName>
+            <ForeName>Robert J</ForeName>
+            <Initials>RJ</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D003160">Comparative Study</PublicationType>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>J Thorac Cardiovasc Surg</MedlineTA>
+        <NlmUniqueID>0376343</NlmUniqueID>
+        <ISSNLinking>0022-5223</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D019014">Antigens, CD95</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>147205-72-9</RegistryNumber>
+          <NameOfSubstance UI="D023201">CD40 Ligand</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>Q20Q21Q62J</RegistryNumber>
+          <NameOfSubstance UI="D002945">Cisplatin</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>AIM</CitationSubset>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000256" MajorTopicYN="N">Adenoviridae</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000818" MajorTopicYN="N">Animals</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D019014" MajorTopicYN="N">Antigens, CD95</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+          <QualifierName UI="Q000276" MajorTopicYN="N">immunology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D017209" MajorTopicYN="N">Apoptosis</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="N">drug effects</QualifierName>
+          <QualifierName UI="Q000502" MajorTopicYN="N">physiology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D023201" MajorTopicYN="N">CD40 Ligand</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018827" MajorTopicYN="N">Carcinoma, Lewis Lung</DescriptorName>
+          <QualifierName UI="Q000276" MajorTopicYN="Y">immunology</QualifierName>
+          <QualifierName UI="Q000628" MajorTopicYN="Y">therapy</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D002945" MajorTopicYN="N">Cisplatin</DescriptorName>
+          <QualifierName UI="Q000494" MajorTopicYN="Y">pharmacology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005434" MajorTopicYN="N">Flow Cytometry</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005455" MajorTopicYN="N">Fluorescent Antibody Technique</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018014" MajorTopicYN="N">Gene Transfer Techniques</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005822" MajorTopicYN="N">Genetic Vectors</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D016219" MajorTopicYN="N">Immunotherapy, Adoptive</DescriptorName>
+          <QualifierName UI="Q000379" MajorTopicYN="Y">methods</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007274" MajorTopicYN="N">Injections, Intraperitoneal</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D051379" MajorTopicYN="N">Mice</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008810" MajorTopicYN="N">Mice, Inbred C57BL</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011336" MajorTopicYN="N">Probability</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012680" MajorTopicYN="N">Sensitivity and Specificity</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018709" MajorTopicYN="N">Statistics, Nonparametric</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015996" MajorTopicYN="N">Survival Rate</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013602" MajorTopicYN="N">T-Lymphocytes, Cytotoxic</DescriptorName>
+          <QualifierName UI="Q000187" MajorTopicYN="Y">drug effects</QualifierName>
+          <QualifierName UI="Q000276" MajorTopicYN="N">immunology</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D014407" MajorTopicYN="N">Tumor Cells, Cultured</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015854" MajorTopicYN="N">Up-Regulation</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>11</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2004</Year>
+          <Month>1</Month>
+          <Day>15</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>11</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">14666041</ArticleId>
+        <ArticleId IdType="doi">10.1016/S0022</ArticleId>
+        <ArticleId IdType="pii">S0022-5223(03)00707-4</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+      <PMID Version="1">14666042</PMID>
+      <DateCreated>
+        <Year>2003</Year>
+        <Month>12</Month>
+        <Day>10</Day>
+      </DateCreated>
+      <DateCompleted>
+        <Year>2004</Year>
+        <Month>01</Month>
+        <Day>14</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2014</Year>
+        <Month>11</Month>
+        <Day>20</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0022-5223</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>126</Volume>
+            <Issue>5</Issue>
+            <PubDate>
+              <Year>2003</Year>
+              <Month>Nov</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>The Journal of thoracic and cardiovascular surgery</Title>
+          <ISOAbbreviation>J. Thorac. Cardiovasc. Surg.</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Efficacy and safety of single-trocar technique for minimally invasive surgery of the chest in the treatment of noncomplex pleural disease.</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>1618-23</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText Label="OBJECTIVE" NlmCategory="OBJECTIVE">Abstract 3 1!</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS">Abstract 3 2!</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">Abstract 3 3!</AbstractText>
+          <AbstractText Label="CONCLUSION" NlmCategory="CONCLUSIONS">Abstract 3 4!</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Migliore</LastName>
+            <ForeName>Marcello</ForeName>
+            <Initials>M</Initials>
+            <AffiliationInfo>
+              <Affiliation>Section of General Thoracic Surgery, Department of Surgery, University of Catania, Italy. mmiglior@unict.it</Affiliation>
+            </AffiliationInfo>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D003160">Comparative Study</PublicationType>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>J Thorac Cardiovasc Surg</MedlineTA>
+        <NlmUniqueID>0376343</NlmUniqueID>
+        <ISSNLinking>0022-5223</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>AIM</CitationSubset>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000328" MajorTopicYN="N">Adult</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000368" MajorTopicYN="N">Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000369" MajorTopicYN="N">Aged, 80 and over</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015331" MajorTopicYN="N">Cohort Studies</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D004653" MajorTopicYN="N">Empyema</DescriptorName>
+          <QualifierName UI="Q000175" MajorTopicYN="N">diagnosis</QualifierName>
+          <QualifierName UI="Q000601" MajorTopicYN="N">surgery</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D007558" MajorTopicYN="N" Type="Geographic">Italy</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008875" MajorTopicYN="N">Middle Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D019060" MajorTopicYN="N">Minimally Invasive Surgical Procedures</DescriptorName>
+          <QualifierName UI="Q000379" MajorTopicYN="N">methods</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D010995" MajorTopicYN="N">Pleural Diseases</DescriptorName>
+          <QualifierName UI="Q000175" MajorTopicYN="Y">diagnosis</QualifierName>
+          <QualifierName UI="Q000601" MajorTopicYN="Y">surgery</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D010996" MajorTopicYN="N">Pleural Effusion</DescriptorName>
+          <QualifierName UI="Q000175" MajorTopicYN="N">diagnosis</QualifierName>
+          <QualifierName UI="Q000601" MajorTopicYN="N">surgery</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011446" MajorTopicYN="N">Prospective Studies</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013902" MajorTopicYN="N">Radiography, Thoracic</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018570" MajorTopicYN="N">Risk Assessment</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012680" MajorTopicYN="N">Sensitivity and Specificity</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D020775" MajorTopicYN="N">Thoracic Surgery, Video-Assisted</DescriptorName>
+          <QualifierName UI="Q000295" MajorTopicYN="N">instrumentation</QualifierName>
+          <QualifierName UI="Q000379" MajorTopicYN="Y">methods</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013906" MajorTopicYN="N">Thoracoscopy</DescriptorName>
+          <QualifierName UI="Q000379" MajorTopicYN="Y">methods</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D014057" MajorTopicYN="N">Tomography, X-Ray Computed</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D016896" MajorTopicYN="N">Treatment Outcome</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>11</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2004</Year>
+          <Month>1</Month>
+          <Day>15</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>11</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">14666042</ArticleId>
+        <ArticleId IdType="doi">10.1016/S0022</ArticleId>
+        <ArticleId IdType="pii">S0022-5223(03)00592-0</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+</PubmedArticleSet>

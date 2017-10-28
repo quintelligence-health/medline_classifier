@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+cd ../src
+
+python -m test.test_dmoz && \
+python -m test.test_medline
+
+cd ../bin

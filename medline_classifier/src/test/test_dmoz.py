@@ -5,7 +5,7 @@ import os
 import sys
 sys.path.append(os.path.join('..', 'src', 'structs'))
 
-import structs
+import dmoz_structs as structs
 
 
 class TestDMozGenerator(unittest.TestCase):
