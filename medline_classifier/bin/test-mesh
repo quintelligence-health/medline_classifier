@@ -4,8 +4,6 @@ set -e
 
 cd ../src
 
-python -m test.test_dmoz && \
-python -m test.test_medline && \
 python -m test.test_mesh
 
 cd ../bin

@@ -1,6 +1,5 @@
 from lxml import etree
 from structs.medline_structs import MedlineArticle
-from util.utils import getFirstElement, countElements
 
 
 class MedlineFileParser:
