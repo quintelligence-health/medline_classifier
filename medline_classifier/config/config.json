@@ -1,3 +1,6 @@
 {
-    "mesh_path": "/Users/lstopar/storage/data/midas/mesh/desc2017.xml"
+    "medline_path": "/Users/lstopar/storage/data/midas/MEDLINE_dump",
+    "mesh_path": "/Users/lstopar/storage/data/midas/mesh/desc2017.xml",
+    "output_path": "/Users/lstopar/storage/data/midas/medline2dmoz",
+    "serialize_path": "/Users/lstopar/storage/project-data/midas/serialize"
 }

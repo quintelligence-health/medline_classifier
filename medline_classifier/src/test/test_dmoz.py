@@ -1,11 +1,6 @@
 import unittest
 from lxml import etree
-
-import os
-import sys
-sys.path.append(os.path.join('..', 'src', 'structs'))
-
-import dmoz_structs as structs
+import structs.dmoz_structs as structs
 
 
 class TestDMozGenerator(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 from sets import Set
-from parsers.mesh_xml import MeshParser
+from parsers.mesh_xml import MeshTree
 from util.arguments import settings
 
 
@@ -8,7 +8,7 @@ class TestMeshParser(unittest.TestCase):
 
     def testCategories(self):
         fname = settings['mesh_path']
-        parser = MeshParser()
+        parser = MeshTree()
         parser.parse(fname)
 
         # TEST 1

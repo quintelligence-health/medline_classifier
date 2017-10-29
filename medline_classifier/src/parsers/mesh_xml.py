@@ -32,6 +32,22 @@ class MeshNode:
         self._child_map = {}
         self._parent = None
 
+    def getChildren(self):
+        return [node for node in self._child_map.itervalues()]
+
+    def getAllCategories(self):
+        result = []
+        self._getAllCategories(result)
+        return result
+
+    def _getAllCategories(self, curr_categories):
+        curr_categories.append(self)
+        # print 'added category: ' + str(self)
+        children = self.getChildren()
+        for child in children:
+            child._getAllCategories(curr_categories)
+
+
     def getCategoryPaths(self):
         if self._getTreeNumberLength(self.descriptor_ui) == 1:
             return [[self.name]]
@@ -47,6 +63,13 @@ class MeshNode:
                     for path2 in paths:
                         result.append(path1 + path2)
         return result
+
+    def getCategoryPathsStr(self):
+        paths = self.getCategoryPaths()
+        path_set = sets.Set(['/'.join(path) for path in paths])
+        result = [path for path in path_set]
+        return result
+
 
     def addChild(self, child):
         child._parent = self
@@ -114,8 +137,11 @@ class MeshNode:
         else:
             return tn.count('.') + 2
 
+    def __str__(self):
+        return '<`' + self.descriptor_ui + '`,`' + self.name + '`>'
 
-class MeshParser:
+
+class MeshTree:
 
     def __init__(self):
         self._root = MeshNode(self, '', 'Top', '')
@@ -129,12 +155,31 @@ class MeshParser:
         return self._node_map[descriptor_ui]
 
     def getCategoryPaths(self, descriptor_ui):
+        if descriptor_ui not in self._node_map:
+            return None
+
         paths = self._node_map[descriptor_ui][0].getCategoryPaths()
         path_set = sets.Set(['/'.join(path) for path in paths])
         result = [path for path in path_set]
         return result
 
+    def getTopCategories(self):
+        return self._root.getChildren()
+
+    def getAllCategories(self):
+        root_categories = self.getTopCategories()
+        # all_categories = [node for node in root_categories]
+        all_categories = []
+        print 'fetching all categories'
+        for node in root_categories:
+            print 'fetching all categories of node ' + node.descriptor_ui
+            all_categories += node.getAllCategories()
+        print 'categories fetched!'
+        return all_categories
+
     def parse(self, fname):
+        print 'parsing MESH tree from `' + fname + '`'
+
         tree = etree.parse(fname)
         descriptors = tree.findall('DescriptorRecord')
 

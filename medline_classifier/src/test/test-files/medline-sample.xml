@@ -596,4 +596,631 @@
       </ArticleIdList>
     </PubmedData>
   </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NASA">
+      <PMID Version="1">14677552</PMID>
+      <DateCreated>
+        <Year>2003</Year>
+        <Month>12</Month>
+        <Day>16</Day>
+      </DateCreated>
+      <DateCompleted>
+        <Year>2004</Year>
+        <Month>01</Month>
+        <Day>16</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2003</Year>
+        <Month>12</Month>
+        <Day>16</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">1042-0711</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>16</Volume>
+            <Issue>6</Issue>
+            <PubDate>
+              <Year>2001</Year>
+              <Month>Jun</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Advanced imaging (Woodbury, N.Y.)</Title>
+          <ISOAbbreviation>Adv Imaging</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Diving into the depths of immersive 3D.</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>47-51</MedlinePgn>
+        </Pagination>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Hindus</LastName>
+            <ForeName>L A</ForeName>
+            <Initials>LA</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>Adv Imaging</MedlineTA>
+        <NlmUniqueID>9884108</NlmUniqueID>
+        <ISSNLinking>1042-0711</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>S</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D018480" MajorTopicYN="N">Astronauts</DescriptorName>
+          <QualifierName UI="Q000193" MajorTopicYN="N">education</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D003196" MajorTopicYN="N">Computer Graphics</DescriptorName>
+          <QualifierName UI="Q000191" MajorTopicYN="N">economics</QualifierName>
+          <QualifierName UI="Q000639" MajorTopicYN="Y">trends</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D021621" MajorTopicYN="N">Imaging, Three-Dimensional</DescriptorName>
+          <QualifierName UI="Q000191" MajorTopicYN="N">economics</QualifierName>
+          <QualifierName UI="Q000639" MajorTopicYN="Y">trends</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008891" MajorTopicYN="N">Military Science</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012984" MajorTopicYN="N">Software</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013026" MajorTopicYN="N">Space Flight</DescriptorName>
+          <QualifierName UI="Q000193" MajorTopicYN="N">education</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D014584" MajorTopicYN="Y">User-Computer Interface</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+      <OtherID Source="NASA">00030073</OtherID>
+      <OtherAbstract Type="NASA" Language="eng">
+        <AbstractText>Commercial use of three-dimensional imaging is discussed. Applications include surgical simulation in medical education, simulation of stealthy torpedos, astronaut training, and data visualization.</AbstractText>
+      </OtherAbstract>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>18</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2004</Year>
+          <Month>1</Month>
+          <Day>17</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>18</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">14677552</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+      <PMID Version="1">14666044</PMID>
+      <DateCreated>
+        <Year>2003</Year>
+        <Month>12</Month>
+        <Day>10</Day>
+      </DateCreated>
+      <DateCompleted>
+        <Year>2004</Year>
+        <Month>01</Month>
+        <Day>14</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2006</Year>
+        <Month>11</Month>
+        <Day>15</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0022-5223</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>126</Volume>
+            <Issue>5</Issue>
+            <PubDate>
+              <Year>2003</Year>
+              <Month>Nov</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>The Journal of thoracic and cardiovascular surgery</Title>
+          <ISOAbbreviation>J. Thorac. Cardiovasc. Surg.</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Implantation of a left ventricular assist device and the hub-and-spoke system in treating acute cardiogenic shock: who survives?</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>1634-5</MedlinePgn>
+        </Pagination>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Kherani</LastName>
+            <ForeName>Aftab R</ForeName>
+            <Initials>AR</Initials>
+            <AffiliationInfo>
+              <Affiliation>Columbia University, College of Physicians and Surgeons, New York, NY, USA.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Cheema</LastName>
+            <ForeName>Faisal H</ForeName>
+            <Initials>FH</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Oz</LastName>
+            <ForeName>Mehmet C</ForeName>
+            <Initials>MC</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Fal</LastName>
+            <ForeName>Jennifer M</ForeName>
+            <Initials>JM</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Morgan</LastName>
+            <ForeName>Jeffrey A</ForeName>
+            <Initials>JA</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Topkara</LastName>
+            <ForeName>Veli K</ForeName>
+            <Initials>VK</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Wilson</LastName>
+            <ForeName>David A</ForeName>
+            <Initials>DA</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Vigilance</LastName>
+            <ForeName>Deon W</ForeName>
+            <Initials>DW</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Garrido</LastName>
+            <ForeName>Mauricio J</ForeName>
+            <Initials>MJ</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Naka</LastName>
+            <ForeName>Yoshifumi</ForeName>
+            <Initials>Y</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D003160">Comparative Study</PublicationType>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>United States</Country>
+        <MedlineTA>J Thorac Cardiovasc Surg</MedlineTA>
+        <NlmUniqueID>0376343</NlmUniqueID>
+        <ISSNLinking>0022-5223</ISSNLinking>
+      </MedlineJournalInfo>
+      <CitationSubset>AIM</CitationSubset>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000208" MajorTopicYN="N">Acute Disease</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000293" MajorTopicYN="N">Adolescent</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000328" MajorTopicYN="N">Adult</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D017677" MajorTopicYN="N">Age Distribution</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000368" MajorTopicYN="N">Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D015331" MajorTopicYN="N">Cohort Studies</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005500" MajorTopicYN="N">Follow-Up Studies</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006353" MajorTopicYN="Y">Heart-Assist Devices</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008875" MajorTopicYN="N">Middle Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D009203" MajorTopicYN="N">Myocardial Infarction</DescriptorName>
+          <QualifierName UI="Q000150" MajorTopicYN="N">complications</QualifierName>
+          <QualifierName UI="Q000175" MajorTopicYN="N">diagnosis</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011336" MajorTopicYN="N">Probability</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012017" MajorTopicYN="N">Referral and Consultation</DescriptorName>
+          <QualifierName UI="Q000458" MajorTopicYN="Y">organization &amp; administration</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012189" MajorTopicYN="N">Retrospective Studies</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018570" MajorTopicYN="N">Risk Assessment</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012720" MajorTopicYN="N">Severity of Illness Index</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D017678" MajorTopicYN="N">Sex Distribution</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D012770" MajorTopicYN="N">Shock, Cardiogenic</DescriptorName>
+          <QualifierName UI="Q000209" MajorTopicYN="N">etiology</QualifierName>
+          <QualifierName UI="Q000401" MajorTopicYN="Y">mortality</QualifierName>
+          <QualifierName UI="Q000601" MajorTopicYN="Y">surgery</QualifierName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D016019" MajorTopicYN="N">Survival Analysis</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D016896" MajorTopicYN="N">Treatment Outcome</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D018487" MajorTopicYN="N">Ventricular Dysfunction, Left</DescriptorName>
+          <QualifierName UI="Q000503" MajorTopicYN="N">physiopathology</QualifierName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>11</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2004</Year>
+          <Month>1</Month>
+          <Day>15</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>11</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">14666044</ArticleId>
+        <ArticleId IdType="doi">10.1016/S0022</ArticleId>
+        <ArticleId IdType="pii">S0022-5223(03)00727-X</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="PubMed-not-MEDLINE" Owner="NLM">
+      <PMID Version="1">14667154</PMID>
+      <DateCreated>
+        <Year>2003</Year>
+        <Month>12</Month>
+        <Day>11</Day>
+      </DateCreated>
+      <DateCompleted>
+        <Year>2004</Year>
+        <Month>02</Month>
+        <Day>24</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2003</Year>
+        <Month>12</Month>
+        <Day>11</Day>
+      </DateRevised>
+      <Article PubModel="Print-Electronic">
+        <Journal>
+          <ISSN IssnType="Print">0003-2654</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>128</Volume>
+            <Issue>10</Issue>
+            <PubDate>
+              <Year>2003</Year>
+              <Month>Oct</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>The Analyst</Title>
+          <ISOAbbreviation>Analyst</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Analysis of green copper pigments in illuminated manuscripts by micro-Raman spectroscopy.</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>1213-7</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText>In the majority of the literature describing green coloured materials used on ancient painting layers (15th or 16th century), two copper greens are mainly cited: malachite [CuCOr3 x Cu(OH)2] and verdigris [Cu(CH3COO)2 x [Cu(OH)2]3 x 2H2O]. It is shown, by micro-Raman spectroscopy, that the artists were actually employing more than these two copper greens, in particular various copper sulfates, among which the most common pigment found is posnjakite [CuSO4 x 3Cu(OH)2 x H2O]. In contrast to the PIXE (particle induced X-ray emission) technique, Raman spectroscopy is a technique of choice, able to distinguish not only a copper sulfate from a carbonate or acetate but also the different sulfates themselves; in this respect, we found that the high wavenumber region (2800-4000 cm(-1)), characteristic of H2O vibrations, is of particular interest. It is also shown that numerous green areas were created with mixtures of a copper sulfate mixed with other pigments, for instance to enhance the colour depth. Finally, in some cases, no green pigment is actually employed but the colour is obtained by intimately mixing yellow and blue pigments. All these results led to a new look at the pigments which were in use on the palettes of the ancient artists.</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Gilbert</LastName>
+            <ForeName>B</ForeName>
+            <Initials>B</Initials>
+            <AffiliationInfo>
+              <Affiliation>University of Liège, Analytical Chemistry and Electrochemistry, Bldg. B6C, Sart Tilman, Liège B-4000, Belgium.</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Denoël</LastName>
+            <ForeName>S</ForeName>
+            <Initials>S</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Weber</LastName>
+            <ForeName>G</ForeName>
+            <Initials>G</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Allart</LastName>
+            <ForeName>D</ForeName>
+            <Initials>D</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+        </PublicationTypeList>
+        <ArticleDate DateType="Electronic">
+          <Year>2003</Year>
+          <Month>09</Month>
+          <Day>29</Day>
+        </ArticleDate>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>England</Country>
+        <MedlineTA>Analyst</MedlineTA>
+        <NlmUniqueID>0372652</NlmUniqueID>
+        <ISSNLinking>0003-2654</ISSNLinking>
+      </MedlineJournalInfo>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>12</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>12</Day>
+          <Hour>5</Hour>
+          <Minute>1</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>12</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">14667154</ArticleId>
+        <ArticleId IdType="doi">10.1039/b306138h</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
+  <PubmedArticle>
+    <MedlineCitation Status="MEDLINE" Owner="NLM">
+      <PMID Version="1">14673398</PMID>
+      <DateCreated>
+        <Year>2003</Year>
+        <Month>12</Month>
+        <Day>15</Day>
+      </DateCreated>
+      <DateCompleted>
+        <Year>2004</Year>
+        <Month>05</Month>
+        <Day>20</Day>
+      </DateCompleted>
+      <DateRevised>
+        <Year>2015</Year>
+        <Month>11</Month>
+        <Day>19</Day>
+      </DateRevised>
+      <Article PubModel="Print">
+        <Journal>
+          <ISSN IssnType="Print">0375-9393</ISSN>
+          <JournalIssue CitedMedium="Print">
+            <Volume>69</Volume>
+            <Issue>10</Issue>
+            <PubDate>
+              <Year>2003</Year>
+              <Month>Oct</Month>
+            </PubDate>
+          </JournalIssue>
+          <Title>Minerva anestesiologica</Title>
+          <ISOAbbreviation>Minerva Anestesiol</ISOAbbreviation>
+        </Journal>
+        <ArticleTitle>Use of sedative and analgesic drugs in the first week of ICU stay in high-level-of-care.</ArticleTitle>
+        <Pagination>
+          <MedlinePgn>765-70, 771-4</MedlinePgn>
+        </Pagination>
+        <Abstract>
+          <AbstractText Label="AIM" NlmCategory="OBJECTIVE">abstract 1</AbstractText>
+          <AbstractText Label="METHODS" NlmCategory="METHODS"/>
+          <AbstractText Label="DESIGN" NlmCategory="METHODS">abstract 3</AbstractText>
+          <AbstractText Label="SETTING" NlmCategory="METHODS">abstract 4</AbstractText>
+          <AbstractText Label="PATIENTS" NlmCategory="METHODS">abstract 5</AbstractText>
+          <AbstractText Label="RESULTS" NlmCategory="RESULTS">abstract 6</AbstractText>
+          <AbstractText Label="CONCLUSION" NlmCategory="CONCLUSIONS">abstract 7</AbstractText>
+        </Abstract>
+        <AuthorList CompleteYN="Y">
+          <Author ValidYN="Y">
+            <LastName>Iapichino</LastName>
+            <ForeName>G</ForeName>
+            <Initials>G</Initials>
+            <AffiliationInfo>
+              <Affiliation>Department of Anesthesiology and Resuscitation, University of Milan, San Paolo Hospital, Milan, Italy. g.iapichino@unimi.it</Affiliation>
+            </AffiliationInfo>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Bertolini</LastName>
+            <ForeName>G</ForeName>
+            <Initials>G</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Pezzi</LastName>
+            <ForeName>A</ForeName>
+            <Initials>A</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Rossi</LastName>
+            <ForeName>C</ForeName>
+            <Initials>C</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Melotti</LastName>
+            <ForeName>R</ForeName>
+            <Initials>R</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Valdambrini</LastName>
+            <ForeName>F</ForeName>
+            <Initials>F</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Albicini</LastName>
+            <ForeName>M</ForeName>
+            <Initials>M</Initials>
+          </Author>
+          <Author ValidYN="Y">
+            <LastName>Di Mauro</LastName>
+            <ForeName>P</ForeName>
+            <Initials>P</Initials>
+          </Author>
+        </AuthorList>
+        <Language>eng</Language>
+        <PublicationTypeList>
+          <PublicationType UI="D016430">Clinical Trial</PublicationType>
+          <PublicationType UI="D016428">Journal Article</PublicationType>
+          <PublicationType UI="D013485">Research Support, Non-U.S. Gov't</PublicationType>
+        </PublicationTypeList>
+      </Article>
+      <MedlineJournalInfo>
+        <Country>Italy</Country>
+        <MedlineTA>Minerva Anestesiol</MedlineTA>
+        <NlmUniqueID>0375272</NlmUniqueID>
+        <ISSNLinking>0375-9393</ISSNLinking>
+      </MedlineJournalInfo>
+      <ChemicalList>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D000700">Analgesics</NameOfSubstance>
+        </Chemical>
+        <Chemical>
+          <RegistryNumber>0</RegistryNumber>
+          <NameOfSubstance UI="D006993">Hypnotics and Sedatives</NameOfSubstance>
+        </Chemical>
+      </ChemicalList>
+      <CitationSubset>IM</CitationSubset>
+      <MeshHeadingList>
+        <MeshHeading>
+          <DescriptorName UI="D000698" MajorTopicYN="Y">Analgesia</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D000700" MajorTopicYN="Y">Analgesics</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D016292" MajorTopicYN="Y">Conscious Sedation</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D003422" MajorTopicYN="Y">Critical Care</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D005260" MajorTopicYN="N">Female</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006801" MajorTopicYN="N">Humans</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D006993" MajorTopicYN="Y">Hypnotics and Sedatives</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008297" MajorTopicYN="N">Male</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D008875" MajorTopicYN="N">Middle Aged</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D011446" MajorTopicYN="N">Prospective Studies</DescriptorName>
+        </MeshHeading>
+        <MeshHeading>
+          <DescriptorName UI="D013997" MajorTopicYN="N">Time Factors</DescriptorName>
+        </MeshHeading>
+      </MeshHeadingList>
+    </MedlineCitation>
+    <PubmedData>
+      <History>
+        <PubMedPubDate PubStatus="pubmed">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>16</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="medline">
+          <Year>2004</Year>
+          <Month>5</Month>
+          <Day>21</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+        <PubMedPubDate PubStatus="entrez">
+          <Year>2003</Year>
+          <Month>12</Month>
+          <Day>16</Day>
+          <Hour>5</Hour>
+          <Minute>0</Minute>
+        </PubMedPubDate>
+      </History>
+      <PublicationStatus>ppublish</PublicationStatus>
+      <ArticleIdList>
+        <ArticleId IdType="pubmed">14673398</ArticleId>
+      </ArticleIdList>
+    </PubmedData>
+  </PubmedArticle>
 </PubmedArticleSet>

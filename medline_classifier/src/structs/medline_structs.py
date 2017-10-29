@@ -10,7 +10,7 @@ class MedlineArticle:
         if abstract is None or abstract == '':
             raise ValueError('Abstract missing!')
         if mesh_headings is None or len(mesh_headings) == 0:
-            raise ValueError('Topic IDs missing!')
+            raise ValueError('Topic IDs missing for article `' + pmid + '`!')
 
         self.pmid = pmid
         self.title = title
@@ -19,3 +19,6 @@ class MedlineArticle:
 
     def getUrl(self):
         return 'https://www.ncbi.nlm.nih.gov/pubmed/' + self.pmid
+
+    def getSingleAbstract(self):
+        return self.abstract

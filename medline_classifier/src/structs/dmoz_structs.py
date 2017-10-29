@@ -63,7 +63,7 @@ class DMozTopic:
 
     def getSubtopicByTitle(self, title):
         if title not in self._subtopic_map:
-            raise ValueError('Subtopic ' + title + ' doesn\'t exist!')
+            raise ValueError('Subtopic `' + title + '` doesn\'t exist!')
         return self._subtopic_map[title]
 
     def addPage(self, page):
@@ -135,39 +135,26 @@ class DMozTopic:
         # return whether we wrote ourself
         return should_write
 
+    def __str__(self):
+        return '<`' + self.topic_id + '`,`' + self.path_name + '`>'
+
 
 class DMozOntology:
 
     def __init__(self):
-        self._topic_map = {}
-        self._root_topic = DMozTopic(1, '', '', '', '')
+        self._root_topic = DMozTopic('1', '', '', '', '')
+        self._topic_map = {
+            '1': self._root_topic
+        }
 
-        self._root_topic.addSubtopic(DMozTopic(2, 'Top', 'Top', 'Top/World', ''))
-
-    def addPage(self, page):
-        topic_id = page.topic_id
-        topic_name = page.topic_name
-
-        if not self.topicExists(topic_id):
-            raise ValueError('Topic `' + topic_name + '` with ID `' + topic_id + '` does not exist!')
-
-        topic = self.getTopic(topic_id)
-        if topic.output_name != topic_name:
-            raise ValueError('Invalid name of topic with ID `' + topic_id + '` should be `' + topic.output_name + '` but page has: ' + page.topic_name)
-
-        topic.addPage(page)
-
-    def getTopic(self, topic_id):
-        return self._topic_map[str(topic_id)]
-
-    def topicExists(self, topic_id):
-        return str(topic_id) in self._topic_map
+        self._root_topic.addSubtopic(DMozTopic('2', 'Top', 'Top', 'Top/World', ''))
 
     def defineTopic(self, topic_id, topic_name, description):
-        if self.topicExists(topic_id):
-            return
-
         topic_id = str(topic_id)
+
+        if self.topicExists(topic_id):
+            raise ValueError('Topic `' + str(topic_id) + '` already exists!')
+
         topic_path = topic_name.split('/')
 
         parent_topic = self._root_topic
@@ -178,14 +165,31 @@ class DMozOntology:
         parent_topic.addSubtopic(topic)
         self._topic_map[topic_id] = topic
 
+    def addPage(self, page):
+        topic_id = page.topic_id
+        topic_name = page.topic_name
+
+        if not self.topicExists(topic_id):
+            raise ValueError('Topic `' + topic_name + '` with ID `' + topic_id + '` does not exist!')
+
+        topic = self.getTopic(topic_id)
+        if topic.output_name != topic_name:
+            raise ValueError('Invalid name of topic ' + str(topic) + ', page has: ' + page.topic_name)
+
+        topic.addPage(page)
+
+    def getTopic(self, topic_id):
+        return self._topic_map[str(topic_id)]
+
+    def topicExists(self, topic_id):
+        return str(topic_id) in self._topic_map
+
     def getContentXml(self):
         root = etree.Element('RDF', nsmap=DMOZ_NS_MAP)
 
         topic = self._root_topic
         topic.writeContentToXml(root)
 
-        # for topic in self.topics:
-        #     topic.writeContentToXml(root)
         return root
 
     def getStructureXml(self):
