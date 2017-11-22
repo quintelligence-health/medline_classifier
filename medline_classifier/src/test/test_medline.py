@@ -6,6 +6,7 @@ def getFirst(elements):
     for element in elements:
         return element
 
+
 class TestMedlineParser(unittest.TestCase):
 
     def testMedlineFile(self):

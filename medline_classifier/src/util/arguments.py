@@ -17,4 +17,5 @@ _args = _argparser.parse_args()
 settings = None
 
 with open(_args.c) as f:
+    print 'loading config file: ' + _args.c
     settings = json.load(f)
