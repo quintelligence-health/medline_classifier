@@ -1,4 +1,5 @@
-import sys, traceback
+import sys
+import traceback
 import os
 import pickle
 
@@ -17,8 +18,10 @@ dmoz = None
 topicid_map = {}
 invalid_descriptor_uis = Set()
 
+
 def toDmozPath(path):
     return 'Top/' + path
+
 
 def processArticle(article):
     global dmoz
