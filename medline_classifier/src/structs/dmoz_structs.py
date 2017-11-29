@@ -1,3 +1,5 @@
+import os
+import json
 from lxml import etree
 
 
@@ -25,6 +27,26 @@ class DMozPage:
         self.topic_id = str(topic_id)
         self.topic_name = topic_name
 
+    def getJson(self):
+        page_json = {
+            'url': self.url,
+            'title': self.title,
+            'description': self.description,
+            'topic_id': self.topic_id,
+            'topic_name': self.topic_name
+        }
+        return json.dumps(page_json)
+
+    @staticmethod
+    def parseJson(json_str):
+        page_json = json.loads(json_str)
+        url = page_json.url
+        title = page_json.title
+        description = page_json.description
+        topic_id = page_json.topic_id
+        topic_name = page_json.topic_name
+        return DMozPage(url, title, description, topic_id, topic_name)
+
     def writeToXml(self, root):
         root.append(self.getXml())
 
@@ -48,15 +70,20 @@ class DMozPage:
 
 class DMozTopic:
 
-    def __init__(self, topic_id, title, path_name, output_name, description):
+    def __init__(self, root_path, topic_id, title, path_name, output_name, description):
         self.topic_id = str(topic_id)
         self.title = title
         self.path_name = path_name
         self.output_name = output_name
         self.description = description
-        self.pages = []
+        # self.pages = []
 
         self._subtopic_map = {}
+        self._root_path = root_path
+
+        topic_dir = os.path.join(root_path, output_name)
+        if not os.path.exists(topic_dir):
+            os.makedirs(topic_dir)
 
     def addSubtopic(self, subtopic):
         self._subtopic_map[subtopic.title] = subtopic
@@ -67,31 +94,55 @@ class DMozTopic:
         return self._subtopic_map[title]
 
     def addPage(self, page):
-        self.pages.append(page)
+        fname = self._getPagesFName()
+        with open(fname, 'a') as f:
+            f.write(page.getJson() + '\n')
+        # self.pages.append(page)
 
-    def writeContentToXml(self, root):
-        topic_el = etree.Element('Topic')
-        topic_el.set(DMOZ_RDF + 'id', self.output_name)
+    def _getPages(self):
+        pages = []
+        fname = self._getPagesFName()
+        with open(fname, 'r') as f:
+            for page_json in f.xreadlines():
+                if len(page_json) == 0:
+                    continue
+                page = DMozPage.parseJson(page_json)
+                pages.append(page)
+        return pages
 
-        catid_el = etree.Element('catid')
-        catid_el.text = self.topic_id
+    def writeContentToXml(self, fout):
+        pages = self._getPages()
 
-        topic_el.append(catid_el)
+        fout.write('<Topic r:id="' + self.output_name + '">')
+        fout.write('<catid>' + self.topic_id + '</catid>')
+        for page in pages:
+            fout.write('<link r:resource="' + page.url + '"></link>')
+        fout.write('</Topic>')
 
-        root.append(topic_el)
-        for i, page in enumerate(self.pages):
-            link = etree.Element('link')
-            link.set(DMOZ_RDF + 'resource', page.url)
+        for page in pages:
+            page.writeXml(fout)  # TODO not implemented
 
-            topic_el.append(link)
-            page_el = page.getXml()
+        # write the pages
+        fname = self._getPagesFName()
+        with open(fname, 'r') as f:
+            for i, page_json in enumerate(f.xreadlines()):
+                if len(page_json) == 0:
+                    continue
 
-            if i == 0:
-                priority_el = etree.Element('priority')
-                priority_el.text = '1'
-                page_el.append(priority_el)
+                page = DMozPage.parseJson(page_json)
 
-            root.append(page_el)
+                link = etree.Element('link')
+                link.set(DMOZ_RDF + 'resource', page.url)
+
+                topic_el.append(link)
+                page_el = page.getXml()
+
+                if i == 0:
+                    priority_el = etree.Element('priority')
+                    priority_el.text = '1'
+                    page_el.append(priority_el)
+
+                root.append(page_el)
 
         for subtopic in self._subtopic_map.values():
             subtopic.writeContentToXml(root)
@@ -134,6 +185,12 @@ class DMozTopic:
 
         # return whether we wrote ourself
         return should_write
+
+    def _getTopicDir(self):
+        return os.path.join(self._root_path, self.output_name)
+
+    def _getPagesFName(self):
+        return os.path.join(self._getTopicDir(), 'pages')
 
     def __str__(self):
         return '<`' + self.topic_id + '`,`' + self.path_name + '`>'
