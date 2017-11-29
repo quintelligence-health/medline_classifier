@@ -1,6 +1,12 @@
 import unittest
 from lxml import etree
 import structs.dmoz_structs as structs
+import xtdiff
+
+
+def xml_compare(r1, r2):
+    diffs = xtdiff.diff(r1, r2)
+    return len(diffs) == 0
 
 
 class TestDMozGenerator(unittest.TestCase):
@@ -82,7 +88,12 @@ class TestDMozGenerator(unittest.TestCase):
         # print etree.tostring(root, pretty_print=True)
 
         expected_root = etree.fromstring(expected_str)
-        self.assertEqual(etree.tostring(root), etree.tostring(expected_root))
+        eq = xml_compare(root, expected_root)
+        if not eq:
+            print 'documents are not equal'
+            print 'document 1:\n' + etree.tostring(root, pretty_print=True)
+            print 'document 2:\n' + etree.tostring(expected_root, pretty_print=True)
+        self.assertTrue(eq)
 
     def testStructureFile(self):
         ontology = structs.DMozOntology()
@@ -151,7 +162,8 @@ class TestDMozGenerator(unittest.TestCase):
               '</Topic>' + \
             '</RDF>'
 
-        self.assertEqual(etree.tostring(root), expected_str)
+        expected_root = etree.fromstring(expected_str)
+        self.assertTrue(xml_compare(root, expected_root))
 
     def testConstruction(self):
         ontology = structs.DMozOntology()
@@ -219,7 +231,7 @@ class TestDMozGenerator(unittest.TestCase):
            '</RDF>'
 
         expected_root = etree.fromstring(expected_str)
-        self.assertEqual(etree.tostring(root), etree.tostring(expected_root))
+        self.assertTrue(xml_compare(root, expected_root))
 
     def testExceptNonExistTopic(self):
         ontology = structs.DMozOntology()
