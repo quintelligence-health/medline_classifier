@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+cd ../src
+
+python -m test.test_dmoz
+
+cd ../bin

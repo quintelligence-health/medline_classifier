@@ -59,6 +59,7 @@ if __name__ == '__main__':
     serialize_path = lambda fname: os.path.join(settings['serialize_path'], fname)
 
     load_dmoz = True
+    process_files = False
 
     def serialize(object, fname):
         with open(serialize_path(fname), 'w') as f:
@@ -73,7 +74,7 @@ if __name__ == '__main__':
     mesh.parse(mesh_path)
 
     # 2) create an empty DMoz ontology
-    dmoz = DMozOntology()
+    dmoz = DMozOntology(settings['cache_path'])
 
     if load_dmoz and os.path.isfile(serialize_path('topicid_map.pkl')):
         print 'loading topics'
@@ -119,35 +120,43 @@ if __name__ == '__main__':
         serialize(dmoz, 'dmoz.pkl')
         print 'topics defined'
 
-    # 3) go through all the medline files and parse them one by one
-    #    adding the results to the dmoz ontology
-    medline_dirs = os.listdir(medline_path)
-    for dirN, dirname in enumerate(medline_dirs):
-        print 'processing directory ' + str(dirN+1) + ' out of ' + str(len(medline_dirs)) + ': `' + dirname + '`'
-        # go through all the files in this directory
-        medline_files = os.listdir(os.path.join(medline_path, dirname))
-        for fileN, medline_fname in enumerate(medline_files):
-            fname = os.path.join(medline_path, dirname, medline_fname)
-            print 'processing file ' + str(fileN+1) + ' out of ' + str(len(medline_files)) + ': `' + fname + '`'
-            parser = MedlineFileParser()
-            parser.parse(fname)
-            articles = parser.getArticles()
-            processArticleBatch(articles)
-    # done! now save the dmoz files
-    print 'finished processing files!'
-    print 'invalid DescriptorUIs: ' + str(invalid_descriptor_uis)
+    if process_files:
+        print 'clearing cache'
+        dmoz.clearCacheDir()
+
+        print 'processing all files'
+        # 3) go through all the medline files and parse them one by one
+        #    adding the results to the dmoz ontology
+        medline_dirs = os.listdir(medline_path)
+        for dirN, dirname in enumerate(medline_dirs):
+            print 'processing directory ' + str(dirN+1) + ' out of ' + str(len(medline_dirs)) + ': `' + dirname + '`'
+            # go through all the files in this directory
+            medline_files = os.listdir(os.path.join(medline_path, dirname))
+            for fileN, medline_fname in enumerate(medline_files):
+                fname = os.path.join(medline_path, dirname, medline_fname)
+                print 'processing file ' + str(fileN+1) + ' out of ' + str(len(medline_files)) + ': `' + fname + '`'
+                parser = MedlineFileParser()
+                parser.parse(fname)
+                articles = parser.getArticles()
+                processArticleBatch(articles)
+        # done! now save the dmoz files
+        print 'finished processing files!'
+        print 'invalid DescriptorUIs: ' + str(invalid_descriptor_uis)
+
+    print 'storing content and structure files'
     dmoz_struct_fname = os.path.join(output_path, 'structure.rdf.u8')
     dmoz_content_fname = os.path.join(output_path, 'content.rdf.u8')
 
-    content_root = dmoz.getContentXml()
-    struct_root = dmoz.getStructureXml()
-
     print 'writing structure file'
     with open(dmoz_struct_fname, 'w') as f:
-        tree = etree.ElementTree(struct_root)
-        tree.write(f, pretty_print=True, xml_declaration=True, encoding='UTF-8')
+        dmoz.writeStructureXml(f)
+        # tree = etree.ElementTree(struct_root)
+        # tree.write(f, pretty_print=True, xml_declaration=True, encoding='UTF-8')
+
     print 'writing content file'
     with open(dmoz_content_fname, 'w') as f:
-        tree = etree.ElementTree(content_root)
-        tree.write(f, pretty_print=True, xml_declaration=True, encoding='UTF-8')
+        dmoz.getContentXml(f)
+    # with open(dmoz_content_fname, 'w') as f:
+    #     tree = etree.ElementTree(f)
+    #     tree.write(f, pretty_print=True, xml_declaration=True, encoding='UTF-8')
     print 'done!'

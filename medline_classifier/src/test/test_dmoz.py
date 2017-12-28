@@ -1,22 +1,39 @@
 import unittest
-from lxml import etree
 import structs.dmoz_structs as structs
 import xtdiff
+import shutil
+from io import StringIO
+import os
+
+from lxml import etree
+from util.arguments import settings
+
+# linesep = os.linesep
+# linesep = u'\n'
+linesep = None
 
 
 def xml_compare(r1, r2):
     diffs = xtdiff.diff(r1, r2)
     return len(diffs) == 0
 
+def clear_cache():
+    cache_dir = settings['cache_path']
+    for file in os.listdir(cache_dir):
+        path_name = os.path.join(cache_dir, file)
+        shutil.rmtree(path_name)
+
 
 class TestDMozGenerator(unittest.TestCase):
 
     def testContentFile(self):
+        clear_cache()
+
         topic_id = '123'
         topic_name = 'Top/Bla/Bla/Hopsasa'
 
         # topic = structs.DMozTopic(topic_id, topic_name, [])
-        ontology = structs.DMozOntology()
+        ontology = structs.DMozOntology(settings['cache_path'])
 
         ontology.defineTopic(3, 'Top/Bla', 'description-3')
         ontology.defineTopic(4, 'Top/Bla/Bla', 'description-4')
@@ -33,7 +50,9 @@ class TestDMozGenerator(unittest.TestCase):
             )
             ontology.addPage(page)
 
-        root = ontology.getContentXml()
+        output = StringIO(newline=linesep)
+        ontology.writeContentXml(output)
+        root = etree.fromstring(output.getvalue())
 
         expected_str = \
            '<RDF xmlns:d="http://purl.org/dc/elements/1.0/" xmlns:r="http://www.w3.org/TR/RDF/" xmlns="http://dmoz.org/rdf/">' + \
@@ -88,18 +107,19 @@ class TestDMozGenerator(unittest.TestCase):
         # print etree.tostring(root, pretty_print=True)
 
         expected_root = etree.fromstring(expected_str)
-        eq = xml_compare(root, expected_root)
-        if not eq:
-            print 'documents are not equal'
-            print 'document 1:\n' + etree.tostring(root, pretty_print=True)
-            print 'document 2:\n' + etree.tostring(expected_root, pretty_print=True)
-        self.assertTrue(eq)
+
+        expected_str = etree.tostring(expected_root)
+        actual_str = etree.tostring(root)
+        self.assertEqual(expected_str, actual_str)
 
     def testStructureFile(self):
-        ontology = structs.DMozOntology()
+        clear_cache()
+
+        ontology = structs.DMozOntology(settings['cache_path'])
 
         ontology.defineTopic(3, 'Top/Pages', 'topic-3')
         ontology.defineTopic(4, 'Top/Utils', 'topic-4')
+
         ontology.defineTopic(5, 'Top/Pages/Book', 'topic-5')
         ontology.defineTopic(6, 'Top/Pages/Html', 'topic-6')
         ontology.defineTopic(7, 'Top/Pages/Web', 'topic-7')    # should not appear in the output because it is empty
@@ -115,7 +135,9 @@ class TestDMozGenerator(unittest.TestCase):
         ontology.addPage(page3)
         ontology.addPage(page4)
 
-        root = ontology.getStructureXml()
+        output = StringIO(newline=linesep)
+        ontology.writeStructureXml(output)
+        root = etree.fromstring(output.getvalue())
 
         expected_str = \
             '<RDF xmlns:d="http://purl.org/dc/elements/1.0/" xmlns:r="http://www.w3.org/TR/RDF/" xmlns="http://dmoz.org/rdf/">' + \
@@ -163,10 +185,21 @@ class TestDMozGenerator(unittest.TestCase):
             '</RDF>'
 
         expected_root = etree.fromstring(expected_str)
-        self.assertTrue(xml_compare(root, expected_root))
+
+        expected_str = etree.tostring(expected_root)
+        actual_str = etree.tostring(root)
+
+        eq = expected_str == actual_str
+        if not eq:
+            print 'expected:\n' + expected_str
+            print '\nactual:\n' + actual_str
+
+        self.assertEqual(expected_str, actual_str)
 
     def testConstruction(self):
-        ontology = structs.DMozOntology()
+        clear_cache()
+
+        ontology = structs.DMozOntology(settings['cache_path'])
 
         ontology.defineTopic(3, 'Top/Pages', 'description-3')
         ontology.defineTopic(4, 'Top/Girlscouts', 'description-4')
@@ -181,9 +214,9 @@ class TestDMozGenerator(unittest.TestCase):
         ontology.addPage(page2)
         ontology.addPage(page3)
 
-        root = ontology.getContentXml()
-
-        # print etree.tostring(root, pretty_print=True)
+        output = StringIO(newline=linesep)
+        ontology.writeContentXml(output)
+        root = etree.fromstring(output.getvalue())
 
         # TODO should the "Top" topic be here???
         expected_str = \
@@ -231,10 +264,23 @@ class TestDMozGenerator(unittest.TestCase):
            '</RDF>'
 
         expected_root = etree.fromstring(expected_str)
-        self.assertTrue(xml_compare(root, expected_root))
+
+        expected_str = etree.tostring(expected_root)
+        actual_str = etree.tostring(root)
+
+        eq = expected_str == actual_str
+        if not eq:
+            print 'expected:\n' + expected_str
+            print '\nactual:\n' + actual_str
+
+        self.assertEqual(expected_str, actual_str)
+
+#         self.assertTrue(xml_compare(root, expected_root))
 
     def testExceptNonExistTopic(self):
-        ontology = structs.DMozOntology()
+        clear_cache()
+
+        ontology = structs.DMozOntology(settings['cache_path'])
         ontology.defineTopic(3, 'Top/Pages', 'description-3')
 
         with self.assertRaises(ValueError):
