@@ -1,7 +1,7 @@
 import os
 import json
 import shutil
-# from lxml import etree
+import platform
 
 
 DMOZ_DEFAULT_NS = 'http://dmoz.org/rdf/'
@@ -22,11 +22,23 @@ DMOZ_NS_MAP = {
 linesep = ''
 # linesep = u'\n'
 
+is_win = platform.system() != 'Linux' and platform.system() != 'Darwin'
+
+print 'using Windows: ' + str(is_win)
+
 def os_path(path):
-	return r"\\?\%s" % path
-	
+    if is_win:
+        print 'returning Windows path'
+        return r"\\?\%s" % path
+    else:
+        print 'returning Unix path'
+        return path
+
 def os_category(category):
-	return category.replace('/', '\\')
+    if is_win:
+        return category.replace('/', '\\')
+    else:
+        return category
 
 
 class DMozPage:

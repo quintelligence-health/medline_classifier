@@ -4,6 +4,7 @@ import xtdiff
 import shutil
 from io import StringIO
 import os
+import platform
 
 from lxml import etree
 from util.arguments import settings
@@ -12,8 +13,23 @@ from util.arguments import settings
 # linesep = u'\n'
 linesep = None
 
+is_win = platform.system() != 'Linux' and platform.system() != 'Darwin'
+
+print 'using Windows: ' + str(is_win)
+
 def os_path(path):
-	return r"\\?\%s" % path
+    if is_win:
+        print 'returning Windows path'
+        return r"\\?\%s" % path
+    else:
+        print 'returning Unix path'
+        return path
+
+def os_category(category):
+    if is_win:
+        return category.replace('/', '\\')
+    else:
+        return category
 
 def xml_compare(r1, r2):
     diffs = xtdiff.diff(r1, r2)

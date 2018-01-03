@@ -4,7 +4,6 @@ import os
 import pickle
 
 from sets import Set
-from lxml import etree
 
 from util.arguments import settings
 from parsers.medline_xml import MedlineFileParser
@@ -150,7 +149,7 @@ if __name__ == '__main__':
         print 'invalid DescriptorUIs: ' + str(invalid_descriptor_uis)
 
     print 'storing content and structure files'
-    
+
     if write_structure_file:
         dmoz_struct_fname = os.path.join(output_path, 'structure.rdf.u8')
         print 'writing structure file'
