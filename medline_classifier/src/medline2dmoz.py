@@ -61,6 +61,9 @@ if __name__ == '__main__':
     load_dmoz = True
     process_files = False
 
+    write_structure_file = False
+    write_content_file = True
+
     def serialize(object, fname):
         with open(serialize_path(fname), 'w') as f:
             pickle.dump(object, f)
@@ -144,19 +147,16 @@ if __name__ == '__main__':
         print 'invalid DescriptorUIs: ' + str(invalid_descriptor_uis)
 
     print 'storing content and structure files'
-    dmoz_struct_fname = os.path.join(output_path, 'structure.rdf.u8')
     dmoz_content_fname = os.path.join(output_path, 'content.rdf.u8')
 
-    print 'writing structure file'
-    with open(dmoz_struct_fname, 'w') as f:
-        dmoz.writeStructureXml(f)
-        # tree = etree.ElementTree(struct_root)
-        # tree.write(f, pretty_print=True, xml_declaration=True, encoding='UTF-8')
-
-    print 'writing content file'
-    with open(dmoz_content_fname, 'w') as f:
-        dmoz.getContentXml(f)
-    # with open(dmoz_content_fname, 'w') as f:
-    #     tree = etree.ElementTree(f)
-    #     tree.write(f, pretty_print=True, xml_declaration=True, encoding='UTF-8')
+    if write_structure_file:
+        dmoz_struct_fname = os.path.join(output_path, 'structure.rdf.u8')
+        print 'writing structure file'
+        with open(dmoz_struct_fname, 'w') as f:
+            dmoz.writeStructureXml(f)
+    if write_content_file:
+        print 'writing content file'
+        with open(dmoz_content_fname, 'w') as f:
+            dmoz.writeContentXml(f)
+    # finished
     print 'done!'
