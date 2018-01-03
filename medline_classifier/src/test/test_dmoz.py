@@ -12,6 +12,8 @@ from util.arguments import settings
 # linesep = u'\n'
 linesep = None
 
+def os_path(path):
+	return r"\\?\%s" % path
 
 def xml_compare(r1, r2):
     diffs = xtdiff.diff(r1, r2)
@@ -21,7 +23,7 @@ def clear_cache():
     cache_dir = settings['cache_path']
     for file in os.listdir(cache_dir):
         path_name = os.path.join(cache_dir, file)
-        shutil.rmtree(path_name)
+        shutil.rmtree(os_path(path_name))
 
 
 class TestDMozGenerator(unittest.TestCase):

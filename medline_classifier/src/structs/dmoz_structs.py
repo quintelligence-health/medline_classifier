@@ -22,6 +22,12 @@ DMOZ_NS_MAP = {
 linesep = ''
 # linesep = u'\n'
 
+def os_path(path):
+	return r"\\?\%s" % path
+	
+def os_category(category):
+	return category.replace('/', '\\')
+
 
 class DMozPage:
 
@@ -54,8 +60,8 @@ class DMozPage:
 
     def writeToXml(self, fout, write_priority):
         fout.write(u'<ExternalPage about="' + self.url + '">')
-        fout.write(u'<d:Title>' + self.title + '</d:Title>')
-        fout.write(u'<d:Description>' + self.description + '</d:Description>')
+        fout.write(u'<d:Title>' + unicode(self.title) + u'</d:Title>')
+        fout.write(u'<d:Description>' + unicode(self.description) + u'</d:Description>')
         fout.write(u'<topic>' + self.topic_name + '</topic>')
         if write_priority:
             fout.write(u'<priority>1</priority>')
@@ -95,9 +101,9 @@ class DMozTopic:
 
         self._should_write = None
 
-        topic_dir = os.path.join(root_path, output_name)
-        if not os.path.exists(topic_dir):
-            os.makedirs(topic_dir)
+        topic_dir = os.path.join(root_path, os_category(output_name))
+        if not os.path.exists(os_path(topic_dir)):
+            os.makedirs(os_path(topic_dir))
 
     def addSubtopic(self, subtopic):
         self._subtopic_map[subtopic.title] = subtopic
@@ -109,7 +115,7 @@ class DMozTopic:
 
     def addPage(self, page):
         fname = self._getPagesFName()
-        with open(fname, 'a') as f:
+        with open(os_path(fname), 'a') as f:
             f.write(page.getJson() + '\n')
         # self.pages.append(page)
 
@@ -210,8 +216,8 @@ class DMozTopic:
     def _getPages(self):
         pages = []
         fname = self._getPagesFName()
-        if os.path.exists(fname):
-            with open(fname, 'r') as f:
+        if os.path.exists(os_path(fname)):
+            with open(os_path(fname), 'r') as f:
                 for page_json in f.xreadlines():
                     page_json = page_json.strip()
                     if len(page_json) == 0:
@@ -221,7 +227,7 @@ class DMozTopic:
         return pages
 
     def _getTopicDir(self):
-        return os.path.join(self._root_path, self.output_name)
+        return os.path.join(self._root_path, os_category(self.output_name))
 
     def _getPagesFName(self):
         return os.path.join(self._getTopicDir(), 'pages.json')
@@ -242,8 +248,8 @@ class DMozOntology:
         self._root_topic.addSubtopic(DMozTopic(cache_path, '2', 'Top', 'Top', 'Top/World', ''))
 
     def clearCacheDir(self):
-        for file in os.listdir(self._cache_path):
-            path_name = os.path.join(self._cache_path, file)
+        for file in os.listdir(os_path(self._cache_path)):
+            path_name = os.path.join(os_path(self._cache_path), file)
             shutil.rmtree(path_name)
 
     def defineTopic(self, topic_id, topic_name, description):

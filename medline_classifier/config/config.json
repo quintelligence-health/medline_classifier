@@ -1,11 +1,11 @@
 {
-    "serialize_path": "/home/lstopar/storage/project-data/midas/serialize",
-    "cache_path": "/home/lstopar/storage/project-data/midas/cache",
+    "serialize_path": "D:\\Users\\lukas\\midas\\serialize",
+    "cache_path": "D:\\MIDAS\\medline2dmoz\\medline2dmoz-cache\\cache",
 
-    "medline_path": "/home/lstopar/data/midas/MEDLINE_dump",
-    "mesh_path": "/home/lstopar/data/midas/mesh/desc2017.xml",
-    "output_path": "/home/lstopar/data/midas/medline2dmoz",
+    "medline_path": "D:\\MIDAS\\MEDLINE_dump",
+    "mesh_path": "D:\\MIDAS\\mesh\\desc2017.xml",
+    "output_path": "D:\\MIDAS\\medline2dmoz\\converted",
 
-    "xserialize_path": "/home/lstopar/storage/project-data/midas/test-serialize",
-    "xcache_path": "/home/lstopar/storage/project-data/midas/test-cache"
+    "xserialize_path": "D:\\Users\\lukas\\midas\\test\\serialize",
+    "xcache_path": "D:\\Users\\lukas\\midas\\test\\cache"
 }
