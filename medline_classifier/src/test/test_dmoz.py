@@ -19,10 +19,8 @@ print 'using Windows: ' + str(is_win)
 
 def os_path(path):
     if is_win:
-        print 'returning Windows path'
         return r"\\?\%s" % path
     else:
-        print 'returning Unix path'
         return path
 
 def os_category(category):
@@ -226,7 +224,7 @@ class TestDMozGenerator(unittest.TestCase):
 
         page1 = structs.DMozPage('url-1', 'title-1', 'description-1', 5, 'Top/Pages/Tralala')
         page2 = structs.DMozPage('url-2', 'title-2', 'description-2', 5, 'Top/Pages/Tralala')
-        page3 = structs.DMozPage('url-3', 'title-3', 'description-3', 6, 'Top/Girlscouts/Hopsasa')
+        page3 = structs.DMozPage('url-3', 'title-3', '<description-3 & >', 6, 'Top/Girlscouts/Hopsasa')
 
         ontology.addPage(page1)
         ontology.addPage(page2)
@@ -275,7 +273,7 @@ class TestDMozGenerator(unittest.TestCase):
             '</Topic>' + \
             '<ExternalPage about="url-3">' + \
              '<d:Title>title-3</d:Title>' + \
-             '<d:Description>description-3</d:Description>' + \
+             '<d:Description>&lt;description-3 &amp; &gt;</d:Description>' + \
              '<topic>Top/Girlscouts/Hopsasa</topic>' + \
              '<priority>1</priority>' + \
             '</ExternalPage>' + \

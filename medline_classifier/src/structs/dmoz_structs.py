@@ -2,6 +2,7 @@ import os
 import json
 import shutil
 import platform
+from xml.sax.saxutils import escape
 
 
 DMOZ_DEFAULT_NS = 'http://dmoz.org/rdf/'
@@ -28,10 +29,8 @@ print 'using Windows: ' + str(is_win)
 
 def os_path(path):
     if is_win:
-        print 'returning Windows path'
         return r"\\?\%s" % path
     else:
-        print 'returning Unix path'
         return path
 
 def os_category(category):
@@ -72,9 +71,9 @@ class DMozPage:
 
     def writeToXml(self, fout, write_priority):
         fout.write(u'<ExternalPage about="' + self.url + '">')
-        fout.write(u'<d:Title>' + unicode(self.title) + u'</d:Title>')
-        fout.write(u'<d:Description>' + unicode(self.description) + u'</d:Description>')
-        fout.write(u'<topic>' + self.topic_name + '</topic>')
+        fout.write(u'<d:Title>' + unicode(escape(self.title)) + u'</d:Title>')
+        fout.write(u'<d:Description>' + unicode(escape(self.description)) + u'</d:Description>')
+        fout.write(u'<topic>' + unicode(escape(self.topic_name)) + '</topic>')
         if write_priority:
             fout.write(u'<priority>1</priority>')
         fout.write(u'</ExternalPage>')
