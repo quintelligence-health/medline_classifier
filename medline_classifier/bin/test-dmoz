@@ -2,8 +2,8 @@
 
 set -e
 
-cd ../src
+cd ../src/python
 
 python -m test.test_dmoz
 
-cd ../bin
+cd ../../bin

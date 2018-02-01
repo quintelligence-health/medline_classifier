@@ -1,7 +1,7 @@
 #!/bin/bash
 
-cd ../src
+cd ../src/python
 
 python -m medline2dmoz $@
 
-cd ../bin
+cd ../../bin

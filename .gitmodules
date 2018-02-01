@@ -1,0 +1,3 @@
+[submodule "medline_classifier/lib/dmoz"]
+	path = medline_classifier/lib/dmoz
+	url = git@github.com:lstopar/dmoz.git

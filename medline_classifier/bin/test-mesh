@@ -2,8 +2,8 @@
 
 set -e
 
-cd ../src
+cd ../src/python
 
 python -m test.test_mesh
 
-cd ../bin
+cd ../../bin
