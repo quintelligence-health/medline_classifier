@@ -1,5 +1,9 @@
 import unittest
 from parsers.medline_xml import MedlineFileParser
+from dmoz_filter import processFile
+from io import StringIO
+from sets import Set
+from lxml import etree
 
 
 def getFirst(elements):
@@ -48,6 +52,25 @@ class TestMedlineParser(unittest.TestCase):
         self.assertEqual(article5.title, 'Use of sedative and analgesic drugs in the first week of ICU stay in high-level-of-care.')
         self.assertEqual(article5.abstract, 'abstract 1 abstract 3 abstract 4 abstract 5 abstract 6 abstract 7')
         self.assertEqual(article5.mesh_headings, ['D000698', 'D000700', 'D016292', 'D003422', 'D005260', 'D006801', 'D006993', 'D008297', 'D008875', 'D011446', 'D013997'])
+
+    def testFilter(self):
+        fname = 'test/test-files/medline-sample.xml'
+
+        with open(fname, 'r') as input:
+            output = StringIO(newline=None)
+            processFile(input, output, Set([2010]))
+            result = output.getvalue()
+
+            # see if we got the correct article
+            result = result.decode('utf-8').encode('ascii')
+            # result_bytes = bytearray(result, 'utf-8')
+            tree = etree.fromstring(result)
+            articles = tree.findall('PubmedArticle')
+
+            self.assertEqual(len(articles), 1)
+            for article in articles:
+                pmid = article.find('MedlineCitation/PMID').text
+                self.assertEqual(pmid, '14666039')
 
 
 if __name__ == '__main__':

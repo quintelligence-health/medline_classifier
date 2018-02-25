@@ -1,0 +1,9 @@
+#!/bin/bash
+
+set -e
+
+cd ../src/python
+
+python -m test.test_medline
+
+cd ../../bin
