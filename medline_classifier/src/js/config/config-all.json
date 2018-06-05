@@ -1,0 +1,11 @@
+{
+    "server": {
+        "port": 9204
+    },
+    "classifier": {
+        "bow": "/home/lstopar/data/midas/medline2dmoz/bow/bow.bin",
+        "bowPart": "/home/lstopar/data/midas/medline2dmoz/bow/bowPart.bin",
+        "classifier": "/home/lstopar/data/midas/medline2dmoz/classifier/dmoz.bin",
+        "filter": "/home/lstopar/data/midas/medline2dmoz/classifier/filter.txt"
+    }
+}

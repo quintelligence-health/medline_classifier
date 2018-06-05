@@ -27,6 +27,11 @@ _argparser.add_argument(
     help="Path to the output file",
     required=False
 )
+_argparser.add_argument(
+    "--only-major",
+    help="Indicates whether non-major topics should be ignored",
+    action='store_true'
+)
 _args = _argparser.parse_args()
 
 settings = None
@@ -39,3 +44,4 @@ with open(_args.c) as f:
     for key in vars(_args):
         value = getattr(_args, key)
         settings[key] = value
+        print key + ': ' + str(value)

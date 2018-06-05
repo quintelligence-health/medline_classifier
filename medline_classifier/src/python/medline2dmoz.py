@@ -58,12 +58,13 @@ if __name__ == '__main__':
     medline_path = settings['medline_path']
     mesh_path = settings['mesh_path']
     output_path = settings['output_path']
+    only_major_topics = settings['only_major']
     serialize_path = lambda fname: os.path.join(settings['serialize_path'], fname)
 
-    load_dmoz = True
-    process_files = False
+    load_dmoz = False
+    process_files = True
 
-    write_structure_file = False
+    write_structure_file = True
     write_content_file = True
 
     def serialize(object, fname):
@@ -105,6 +106,7 @@ if __name__ == '__main__':
         all_paths = [path for path in path_set]
         all_paths.sort(cmp=path_cmp)
         curr_id = 3
+
         for pathN, node_path in enumerate(all_paths):
             if pathN % 1000 == 0:
                 print 'processing path ' + str(pathN+1) + ' of ' + str(len(all_paths))
@@ -126,8 +128,8 @@ if __name__ == '__main__':
         print 'topics defined'
 
     if process_files:
-        print 'clearing cache'
-        dmoz.clearCacheDir()
+        # print 'clearing cache'
+        # dmoz.clearCacheDir()
 
         print 'processing all files'
         # 3) go through all the medline files and parse them one by one
@@ -140,7 +142,7 @@ if __name__ == '__main__':
             for fileN, medline_fname in enumerate(medline_files):
                 fname = os.path.join(medline_path, dirname, medline_fname)
                 print 'processing file ' + str(fileN+1) + ' out of ' + str(len(medline_files)) + ': `' + fname + '`'
-                parser = MedlineFileParser()
+                parser = MedlineFileParser(only_major_topics)
                 parser.parse(fname)
                 articles = parser.getArticles()
                 processArticleBatch(articles)

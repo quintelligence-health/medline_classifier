@@ -78,24 +78,6 @@ class DMozPage:
             fout.write(u'<priority>1</priority>')
         fout.write(u'</ExternalPage>')
 
-    # def getXml(self):
-    #     page_el = etree.Element('ExternalPage', about=self.url)
-
-    #     title_el = etree.Element(DMOZ_ELEMENTS + 'Title', nsmap=DMOZ_NS_MAP)
-    #     title_el.text = self.title
-    #     page_el.append(title_el)
-
-    #     desc_el = etree.Element(DMOZ_ELEMENTS + 'Description', nsmap=DMOZ_NS_MAP)
-    #     desc_el.text = self.description
-    #     page_el.append(desc_el)
-
-    #     topic_el = etree.Element('topic')
-    #     topic_el.text = self.topic_name
-    #     page_el.append(topic_el)
-
-    #     return page_el
-
-
 
 class DMozTopic:
 

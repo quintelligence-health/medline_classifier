@@ -1,11 +1,11 @@
 {
-    "xserialize_path": "/home/lstopar/storage/project-data/midas/serialize",
-    "xcache_path": "/home/lstopar/storage/project-data/midas/cache",
+    "serialize_path": "/home/lstopar/storage/project-data/midas/serialize",
+    "cache_path": "/home/lstopar/storage/project-data/midas/cache",
 
-    "medline_path": "/home/lstopar/data/midas/MEDLINE_dump",
+    "medline_path": "/home/lstopar/data/midas/MEDLINE_sample",
     "mesh_path": "/home/lstopar/data/midas/mesh/desc2017.xml",
-    "output_path": "/home/lstopar/data/midas/medline2dmoz",
+    "output_path": "/home/lstopar/data/midas/medline2dmoz/rdf-sample-3years-major",
 
-    "serialize_path": "/home/lstopar/storage/project-data/midas/test-serialize",
-    "cache_path": "/home/lstopar/storage/project-data/midas/test-cache"
+    "xserialize_path": "/home/lstopar/storage/project-data/midas/test-serialize",
+    "xcache_path": "/home/lstopar/storage/project-data/midas/test-cache"
 }

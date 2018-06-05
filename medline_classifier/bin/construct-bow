@@ -1,4 +1,4 @@
 #!/bin/bash
 
 cd ../src/js/src
-node classifier-init.js --rdf=/home/lstopar/data/midas/medline2dmoz/rdf --bow=/media/lstopar/usb/data/medline2dmoz/bow/bow.bin --bowPart=/media/lstopar/usb/data/medline2dmoz/bow/bowPart.bin
+node classifier-init.js --rdf=/home/lstopar/data/midas/medline2dmoz/rdf-sample-3years-major --bow=/mnt/raidM2T/data/midas/medline2dmoz/bow-3years-major/bow.bin --bowPart=/mnt/raidM2T/data/midas/medline2dmoz/bow-3years-major/bowPart.bin

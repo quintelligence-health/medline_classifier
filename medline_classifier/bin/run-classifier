@@ -1,0 +1,4 @@
+#!/bin/bash
+
+cd ../src/js/src
+node classifier-server.js $@ | bunyan -o short

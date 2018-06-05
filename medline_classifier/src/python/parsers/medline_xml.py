@@ -5,8 +5,9 @@ from structs.medline_structs import MedlineArticle
 
 class MedlineFileParser:
 
-    def __init__(self):
+    def __init__(self, only_major_topics=False):
         self._articles = []
+        self._only_major_topics = only_major_topics
 
     def getArticles(self):
         return self._articles
@@ -65,6 +66,14 @@ class MedlineFileParser:
             for heading_el in mesh_heading_els:
                 descriptor_el = heading_el.find('DescriptorName')
                 descriptor_attrs = descriptor_el.attrib
+                major_indicator = descriptor_attrs['MajorTopicYN']
+
+                if self._only_major_topics and major_indicator == 'N':
+                    continue
+
+                if self._only_major_topics and major_indicator != 'Y':
+                    raise ValueError('Invalid major topic indicator: ' + major_indicator)
+
                 topic_id = descriptor_attrs['UI']
                 topic_ids.append(topic_id)
 

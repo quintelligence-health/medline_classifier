@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="sl">
+    <head>
+        <% include partials/head %>
+    </head>
+    <body>
+        <div id="wrapper">
+            <% include partials/nav %>
+
+            <div id="page-wrapper" class="container d-none">
+                <div class="row">
+                    <div class="col col-md-6 offset-md-3">
+                        <form>
+                            <div class="form-group">
+                                <label for="input-text">Please enter text here:</label>
+                                <textarea id="input-text" v-model="text" v-on:change="clearCategories()" class="form-control" rows=10></textarea>
+                            </div>
+                        </form>
+                        <form class="form-inline">
+                            <div class="form-group mb-2">
+                                <label for="input-num-categories">Number of categories:</label>
+                                <input id="input-num-categories" v-model="maxCategories" v-on:change="handleMaxCategoriesChange()" type="number" min="5" max="200" step="5" class="form-control"></input>
+                            </div>
+                        </form>
+                        <form>
+                            <div class="form-group" v-if="text != null && text.length >= 32">
+                                <input type="button" v-on:click="onFetchCategories()" value="Classify" class="btn btn-primary form-control" />
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div v-if="errorMessage != null" class="alert alert-danger">
+                                        {{ errorMessage }}
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group" v-if="text != null && text.length >= 32 && categories.length > 0">
+                                <label for="list-categories">MeSH Categories:</label>
+                                <table id="list-categories" class="table table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Category</th>
+                                            <th scope="col">Similarity</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr v-for="(category, categoryN) in categories">
+                                            <th scope="row">{{ (categoryN+1) }}</th>
+                                            <td>
+                                                <small>{{ category.category }}</small>
+                                            </td>
+                                            <td class="text-right">{{ category.weight | formatWeight }}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- /#page-wrapper -->
+        </div>
+        <!-- /#wrapper -->
+        <% include partials/includejs %>
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
+</html>

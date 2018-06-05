@@ -9,7 +9,8 @@ class MedlineArticle:
             raise ValueError('Title missing!')
         if abstract is None or abstract == '':
             raise ValueError('Abstract missing!')
-        if mesh_headings is None or len(mesh_headings) == 0:
+        # if mesh_headings is None or len(mesh_headings) == 0:
+        if mesh_headings is None:
             raise ValueError('Topic IDs missing for article `' + pmid + '`!')
 
         self.pmid = pmid
