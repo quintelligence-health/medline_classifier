@@ -41,7 +41,10 @@ with open(_args.c) as f:
     settings = json.load(f)
 
     # override with values from the arguments
+    print '================================'
+    print 'Settings:'
     for key in vars(_args):
         value = getattr(_args, key)
         settings[key] = value
         print key + ': ' + str(value)
+    print '================================'
