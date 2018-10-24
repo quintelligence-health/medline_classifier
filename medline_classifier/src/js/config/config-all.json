@@ -1,11 +1,11 @@
 {
     "server": {
-        "port": 9808
+        "port": 9091
     },
     "classifier": {
-        "bow": "/home/lstopar/data/midas/medline2dmoz/bow-3years-major/bow.bin",
-        "bowPart": "/home/lstopar/data/midas/medline2dmoz/bow-3years-major/bowPart.bin",
-        "classifier": "/home/lstopar/data/midas/medline2dmoz/classifier-3years-major/dmoz.bin",
-        "filter": "/home/lstopar/data/midas/medline2dmoz/classifier-3years-major/filter.txt"
+        "bow": "/home/midas/data/medline/output/bow/major-topics/bow.bin",
+        "bowPart": "/home/midas/data/medline/output/bow/major-topics/bowPart.bin",
+        "classifier": "/home/midas/data/medline/output/bow/major-topics/dmoz.bin",
+        "filter": "/home/midas/data/medline/output/bow/major-topics/filter.txt"
     }
 }

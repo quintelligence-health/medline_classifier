@@ -21,6 +21,8 @@ function parseConfFile() {
         confFile = path.join(__dirname, '../..', args.conf);
     }
 
+    console.log('using configuration file: ' + confFile);
+
     let settingsStr = fs.readFileSync(confFile);
     let settings = JSON.parse(settingsStr);
     return settings;

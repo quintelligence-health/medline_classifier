@@ -38,6 +38,9 @@ class MedlineFileParser:
             title_el = article_el.find('MedlineCitation/Article/ArticleTitle')
             title = title_el.text
 
+            if title is None:
+                return None
+
             # ABSTRACT
             # there are multiple abstracts located in
             # MedlineCitation/Article/Abstract/AbstractText or
