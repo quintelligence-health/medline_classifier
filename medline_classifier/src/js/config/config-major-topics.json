@@ -1,0 +1,11 @@
+{
+    "server": {
+        "port": 9090
+    },
+    "classifier": {
+        "bow": "/home/midas/storage/project-data/mesh-classifier/major-topics/bow/bow.bin",
+        "bowPart": "/home/midas/storage/project-data/mesh-classifier/major-topics/bow/bowPart.bin",
+        "classifier": "/home/midas/storage/project-data/mesh-classifier/major-topics/classifier/dmoz.bin",
+        "filter": "/home/midas/storage/project-data/mesh-classifier/major-topics/classifier/filter.txt"
+    }
+}
