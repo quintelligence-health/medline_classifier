@@ -23,3 +23,14 @@ class MedlineArticle:
 
     def getSingleAbstract(self):
         return self.abstract
+
+    def hasMeshHeadings(self):
+        return len(self.mesh_headings) > 0
+
+    def asDict(self):
+        return {
+            'pmid': self.pmid,
+            'title': self.title,
+            'abstract': self.abstract,
+            'meshHeadings': self.mesh_headings
+        }

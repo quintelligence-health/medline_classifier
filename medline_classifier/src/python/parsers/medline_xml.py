@@ -5,9 +5,10 @@ from structs.medline_structs import MedlineArticle
 
 class MedlineFileParser:
 
-    def __init__(self, only_major_topics=False):
+    def __init__(self, only_major_topics=False, allow_empty_headings=False):
         self._articles = []
         self._only_major_topics = only_major_topics
+        self._allow_empty_headings = allow_empty_headings
 
     def getArticles(self):
         return self._articles
@@ -25,6 +26,8 @@ class MedlineFileParser:
 
     def _parseArticle(self, article_el):
         pmid = None
+
+        allow_empty_headings = self._allow_empty_headings
 
         try:
             # URL is determined by PMID
@@ -63,22 +66,23 @@ class MedlineFileParser:
             topic_ids = []
             mesh_heading_els = article_el.findall('MedlineCitation/MeshHeadingList/MeshHeading')
 
-            if mesh_heading_els is None or len(mesh_heading_els) == 0:
+            if not allow_empty_headings and (mesh_heading_els is None or len(mesh_heading_els) == 0):
                 return None
 
-            for heading_el in mesh_heading_els:
-                descriptor_el = heading_el.find('DescriptorName')
-                descriptor_attrs = descriptor_el.attrib
-                major_indicator = descriptor_attrs['MajorTopicYN']
+            if mesh_heading_els is not None:
+                for heading_el in mesh_heading_els:
+                    descriptor_el = heading_el.find('DescriptorName')
+                    descriptor_attrs = descriptor_el.attrib
+                    major_indicator = descriptor_attrs['MajorTopicYN']
 
-                if self._only_major_topics and major_indicator == 'N':
-                    continue
+                    if self._only_major_topics and major_indicator == 'N':
+                        continue
 
-                if self._only_major_topics and major_indicator != 'Y':
-                    raise ValueError('Invalid major topic indicator: ' + major_indicator)
+                    if self._only_major_topics and major_indicator != 'Y':
+                        raise ValueError('Invalid major topic indicator: ' + major_indicator)
 
-                topic_id = descriptor_attrs['UI']
-                topic_ids.append(topic_id)
+                    topic_id = descriptor_attrs['UI']
+                    topic_ids.append(topic_id)
 
             return MedlineArticle(pmid, title, abstract, topic_ids)
         except:
