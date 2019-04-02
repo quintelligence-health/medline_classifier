@@ -92,6 +92,21 @@ class MeshNode:
                 raise ValueError('Invalid length of child tree list: ' + child.tree_number)
             self._child_map[child_tree_list[-1]] = child
 
+    def getChild(self, subcat_name):
+        # TODO: the children are only indexed by the tree number
+        # TODO: the procedure would be faster if we would also index them by subcategory
+        children = self.getChildren()
+        for child in children:
+            if child.name == subcat_name:
+                return child
+
+        subcats_str = ''
+        for child in children:
+            subcats_str += '\n' + child.name
+
+        return None
+#         raise ValueError('Child not found for subcategory `' + subcat_name + '`, current category: ' + str(self) + ', subcategories: ' + subcats_str)
+
     def canInsert(self, tree_number):
         if self._getTreeNumberLength(tree_number) == self._getTreeNumberLength(self.tree_number) + 1:
             return True
@@ -151,8 +166,27 @@ class MeshTree:
             node = MeshNode(self, code, name, code)
             self._root.insert(node)
 
+    def getTreeNumbers(self, descriptor_ui):
+        if not descriptor_ui in self._node_map:
+            return []
+            # raise ValueError('Descriptor UI not found: ' + descriptor_ui)
+        nodes = self._node_map[descriptor_ui]
+        return [node.tree_number for node in nodes]
+
     def getNodesByDescriptor(self, descriptor_ui):
         return self._node_map[descriptor_ui]
+
+    def getCategoryDescriptor(self, category_str):
+        category_elements = category_str.split('/')
+
+        # find the leaf node and read it's descriptor UI
+        curr_node = self._root
+        for subcat in category_elements:
+            curr_node = curr_node.getChild(subcat)
+            if curr_node is None:
+                return None
+
+        return curr_node.descriptor_ui
 
     def getCategoryPaths(self, descriptor_ui):
         if descriptor_ui not in self._node_map:
