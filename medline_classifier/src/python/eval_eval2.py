@@ -16,7 +16,7 @@ def evalToDepth((wgt_cutoff, depth)):
 
 if __name__ == '__main__':
     mesh_path = settings['mesh_path']
-    classified_path = '/home/midas/data/eval/new-classified-250.json'
+    classified_path = '/home/midas/data/eval/new-classified-major.json'
 
     mesh_serialize_path = '/home/midas/storage/data/eval/temp/mesh.pkl'
 
@@ -35,7 +35,7 @@ if __name__ == '__main__':
     evaluator = MedlineEvaluator(medline_path_old, medline_path_new, unannotated_path, eval_candidate_path)
 
     score_map = {}
-    with ThreadPoolExecutor(max_workers=20) as executor:
+    with ThreadPoolExecutor(max_workers=1) as executor:
         wgt_depth_tuples = []
         for iterN in range(15, 51):
             wgt_cutoff = 0.01*float(iterN)
@@ -50,7 +50,11 @@ if __name__ == '__main__':
         for resultN in range(len(wgt_depth_tuples)):
             score = scores[resultN]
             wgt_depth_tup = wgt_depth_tuples[resultN]
-            score_map[wgt_depth_tup] = score
+            score_map[str(wgt_depth_tup[0]) + '-' + str(wgt_depth_tup[1])] = score
 
     print 'score: ' + str(score_map)
+
+    with open('eval2-major.json', 'w') as f:
+        json.dump(score_map, f, indent=4)
+
     print 'done'

@@ -18,7 +18,9 @@ def deserialize(fname):
 
 if __name__ == '__main__':
     mesh_path = settings['mesh_path']
-    classified_path = '/home/midas/data/eval/new-classified-250.json'
+
+    classified_path = '/home/midas/data/eval/new-classified-major.json'
+    is_only_major = True
 
     mesh_serialize_path = '/home/midas/storage/data/eval/temp/mesh.pkl'
 
@@ -45,7 +47,7 @@ if __name__ == '__main__':
         mesh = deserialize(mesh_serialize_path)
 
     evaluator = MedlineEvaluator(medline_path_old, medline_path_new, unannotated_path, eval_candidate_path)
-    evaluator.appendMeshHeadings(articles_json, mesh)
+    evaluator.appendMeshHeadings(articles_json, mesh, only_major=is_only_major)
 
     print 'writing articles'
     with open(classified_path, 'w') as f:

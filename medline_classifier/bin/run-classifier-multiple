@@ -1,0 +1,12 @@
+#!/bin/bash
+
+cd ../src/js/src
+
+for ((i=1;i<=24;i++)); do
+    port=$((8100 + i))
+
+    echo "running classifier on port $port"
+    node classifier-server.js $@ --port $port --conf config/config-all.json | bunyan -o short &
+    
+    sleep 1
+done

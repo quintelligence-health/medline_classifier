@@ -40,7 +40,7 @@ if __name__ == '__main__':
     medline_path_new = settings['medline_path']
     medline_path_old = settings['medline_path_old']
     unannotated_path = '/home/midas/data/eval/old-unannotated.json'
-    eval_candidate_path = '/home/midas/data/eval/new-annotated.json'
+    eval_candidate_path = '/home/midas/data/eval/new-annotated-major.json'
     classified_path = '/home/midas/data/eval/new-classified-major.json'
 
     endpoint_url = 'http://qmidas.quintelligence.com/classify-mesh-major/api/classify'

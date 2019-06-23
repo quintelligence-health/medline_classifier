@@ -17,9 +17,18 @@ def calcRecall(tp, fp, fn):
     al = float(tp + fn)
     return float(tp) / al if al != 0.0 else 1
 
+def calcFBeta(tp, fp, fn, beta):
+    beta2 = float(beta)**2
+    bottom = float((1 + beta2)*tp + beta2*fn + fp)
+    return (1 + beta2) * tp / bottom if bottom != 0.0 else 1
+
 def calcF1(tp, fp, fn):
     bottom = float(2*tp + fp + fn)
     return 2.0*tp / bottom if bottom != 0.0 else 1
+
+def calcF05(tp, fp, fn):
+    return calcFBeta(tp, fp, fn, 0.5)
+
 
 class MedlineEvaluator:
 
@@ -30,9 +39,9 @@ class MedlineEvaluator:
         self._eval_articles_fname = eval_articles_fname
         self._max_workers = 12
 
-    def extractCandidates(self):
+    def extractCandidates(self, only_major):
         # first find the articles that are not annotated in the old dataset
-        articles_old = self._readMedline(self._medline_dir_old)
+        articles_old = self._readMedline(self._medline_dir_old, only_major)
 
         unannotated_json = []
         old_article_map = {}
@@ -62,7 +71,7 @@ class MedlineEvaluator:
         eval_candidates = []
 
         # read the new articles
-        articles_new = self._readMedline(self._medline_dir_new)
+        articles_new = self._readMedline(self._medline_dir_new, only_major)
         for articleN, article in enumerate(articles_new):
             if articleN % 10000 == 0:
                 print 'processing article ' + str(articleN+1)
@@ -114,7 +123,7 @@ class MedlineEvaluator:
         print 'classified ' + str(len(articles_json)) + ' articles in ' + str(dur_secs) + ' seconds'
         print 'total failed classifications: ' + str(failed_count)
 
-    def appendMeshHeadings(self, articles, mesh):
+    def appendMeshHeadings(self, articles, mesh, only_major=False):
         descriptor_set = Set()
 
         missing_descriptors = 0
@@ -175,101 +184,167 @@ class MedlineEvaluator:
         print 'missing descriptors ' + str(missing_descriptors) + ' of ' + str(total_descriptors)
         print 'done!'
 
-    def evalExactMatches(self, articles):
+    def evalExactMatches(self, articles, wgt_cutoff=0.0):
         print 'evaluating exact matches'
-        total_tp = 0
-        total_fp = 0
-        total_fn = 0
+
+        n_articles = len(articles)
 
         f1_dataset = 0
+        f05_dataset = 0
 
         classified_uis_mean = 0
         real_uis_mean = 0
 
-        for article in articles:
-            classified_uis = Set([heading['descriptorUi'] for heading in article['classifiedMeshHeadings']])
+        f1_mean = 0
+        f05_mean = 0
+        precision_mean = 0
+        recall_mean = 0
+
+        n_bins = 101
+        f1_dist = [0 for _ in range(n_bins)]
+        f05_dist = [0 for _ in range(n_bins)]
+        precision_dist = [0 for _ in range(n_bins)]
+        recall_dist = [0 for _ in range(n_bins)]
+
+        for articleN, article in enumerate(articles):
+            if articleN % 10000 == 0:
+                print 'processing article ' + str(articleN+1)
+            classified_uis = Set([heading['descriptorUi'] for heading in article['classifiedMeshHeadings'] if heading['weight'] >= wgt_cutoff])
             real_uis = Set(article['meshHeadings'])
 
             tp = len(classified_uis.intersection(real_uis))
             fp = len(classified_uis.difference(real_uis))
             fn = len(real_uis.difference(classified_uis))
 
-            f1_article = 2.0*float(tp) / float(2*tp + fn + fp)
+            f1_article = calcF1(tp, fp, fn)
+            f05_article = calcF05(tp, fp, fn)
+            precision = calcPrecision(tp, fp, fn)
+            recall = calcRecall(tp, fp, fn)
+
+            f1_mean += f1_article
+            f05_mean += f05_article
+            precision_mean += precision
+            recall_mean += recall
+
+            f1_binN = int(100*f1_article)
+            f1_dist[f1_binN] += 1
+
+            f05_binN = int(100*f05_article)
+            f05_dist[f05_binN] += 1
+
+            precision_binN = int(100*precision)
+            precision_dist[precision_binN] += 1
+
+            recall_binN = int(100*recall)
+            recall_dist[recall_binN] += 1
+
+            f1_dataset += f1_article
+            f05_dataset += f05_article
 
             classified_uis_mean += len(classified_uis)
             real_uis_mean += len(real_uis)
-
-            total_tp += tp
-            total_fp += fp
-            total_fn += fn
 
             f1_dataset += f1_article
 
         classified_uis_mean /= float(len(articles))
         real_uis_mean /= float(len(articles))
 
-        precision = float(total_tp) / float(total_tp + total_fp)
-        recall = float(total_tp) / float(total_tp + total_fn)
-
-        f1_global = 2*precision*recall / (precision + recall)
         f1_dataset /= len(articles)
+        f05_dataset /= len(articles)
+
+        f1_mean /= float(n_articles)
+        f05_mean /= float(n_articles)
+        precision_mean /= float(n_articles)
+        recall_mean /= float(n_articles)
+
+        def median(dist):
+            prob_sum = 0
+            for valN, val in enumerate(dist):
+                prob_sum += val
+                if prob_sum >= 0.5:
+                    return 0.005*(valN + valN+1)
+            return 1
+
+
+        f1_dist = [float(val) / n_articles for val in f1_dist]
+        f05_dist = [float(val) / n_articles for val in f05_dist]
+        precision_dist = [float(val) / n_articles for val in precision_dist]
+        recall_dist = [float(val) / n_articles for val in recall_dist]
+
+        f1_median = median(f1_dist)
+        f05_median = median(f05_dist)
+        precision_median = median(precision_dist)
+        recall_median = median(recall_dist)
 
         return {
-            'tp': total_tp,
-            'fp': total_fp,
-            'fn': total_fn,
             'avgHeadings': real_uis_mean,
             'avgClassifiedHeadings': classified_uis_mean,
-            'precision': precision,
-            'recall': recall,
-            'f1_global': f1_global,
-            'f1_dataset': f1_dataset
+            # 'precision': precision,
+            # 'recall': recall,
+            'f1_dataset': f1_dataset,
+            'f05_dataset': f05_dataset,
+            'f1_mean': f1_mean,
+            'f05_mean': f05_mean,
+            'precision_mean': precision_mean,
+            'recall_mean': recall_mean,
+            'f1_median': f1_median,
+            'f05_median': f05_median,
+            'precision_median': precision_median,
+            'recall_median': recall_median,
+            'f1_dist': f1_dist,
+            'f05_dist': f05_dist,
+            'precision_dist': precision_dist,
+            'recall_dist': recall_dist
         }
 
     def evalToDepth(self, articles, depth, wgt_cutoff=0.0):
-        total_tp = 0
-        total_fp = 0
-        total_fn = 0
+        n_articles = len(articles)
 
         f1_dataset = 0
+        f05_dataset = 0
 
         classified_uis_mean = 0
         real_uis_mean = 0
 
+        f1_mean = 0
+        f05_mean = 0
+        precision_mean = 0
+        recall_mean = 0
+
+        n_bins = 101
+        f1_dist = [0 for _ in range(n_bins)]
+        f05_dist = [0 for _ in range(n_bins)]
+        precision_dist = [0 for _ in range(n_bins)]
+        recall_dist = [0 for _ in range(n_bins)]
+
         for articleN, article in enumerate(articles):
             if articleN % 10000 == 1:
-                precision = calcPrecision(total_tp, total_fp, total_fn)
-                recall = calcRecall(total_tp, total_fp, total_fn)
-                # print '==========================='
-                print 'processing article ' + str(articleN) + ', depth ' + str(depth) + ', wgt cutoff ' + str(wgt_cutoff) + ', precision: ' + str(precision) + ', recall: ' + str(recall)
-                # print 'tp: ' + str(total_tp)
-                # print 'fp: ' + str(total_fp)
-                # print 'fn: ' + str(total_fn)
-                # print 'precision: ' + str(precision)
-                # print 'recall: ' + str(recall)
-                # print '==========================='
+                print 'processing article ' + str(articleN) + ', depth ' + str(depth) + ', wgt cutoff ' + str(wgt_cutoff)
 
             classified_headings = article['classifiedMeshHeadings']
             real_headings = article['annotatedMeshHeadings']
 
             classified_headings = [heading for heading in classified_headings if heading['weight'] >= wgt_cutoff]
 
-            # print 'comparing classified: ' + str(classified_headings) + ' to ' + str(real_headings)
-
             tp = 0
             fp = 0
             fn = 0
 
-            # true positives and false positives
-            for classified_heading in classified_headings:
-                classified_tree_numbers = classified_heading['treeNumbers']
+            classified_undupl = TreeNumberHelper.removeDuplicates(classified_headings, depth)
+            real_undupl = TreeNumberHelper.removeDuplicates(real_headings, depth)
 
-                # print 'classified DescriptorUI: ' + classified_heading['descriptorUi']
+            # print '\n\n\n\nclassified: ' + str(classified_headings) + ', undupl: ' + str(classified_undupl)
+            # print '\n\n\n\nreal: ' + str(real_headings) + ', undupl: ' + str(real_undupl)
+
+            # true positives and false positives
+            for classified_tree_numbers in classified_undupl:
+                # classified_tree_numbers = classified_heading['treeNumbers']
+
                 # check if the heading appears in the real headings
                 is_tp = False
-                for real_heading in real_headings:
-                    real_tree_numbers = real_heading['treeNumbers']
-                    # print 'real DescriptorUI: ' + real_heading['descriptorUi']
+                for real_tree_numbers in real_headings:
+                    # real_tree_numbers = real_heading['treeNumbers']
+
                     match = TreeNumberHelper.anyMatchesToDepth(
                         classified_tree_numbers,
                         real_tree_numbers,
@@ -279,22 +354,20 @@ class MedlineEvaluator:
                         is_tp = True
                         break
 
-                # print 'is TP: ' + str(is_tp)
-
                 tp += 1 if is_tp else 0
                 fp += 1 if not is_tp else 0
 
             # false negatives
-            for real_heading in real_headings:
-                real_tree_numbers = real_heading['treeNumbers']
+            for real_tree_numbers in real_undupl:
+                # real_tree_numbers = real_heading['treeNumbers']
 
                 if len(real_tree_numbers) == 0:
                     continue
 
                 # check that the heading does not appear in the classified headings
                 is_fn = True
-                for classified_heading in classified_headings:
-                    classified_tree_numbers = classified_heading['treeNumbers']
+                for classified_tree_numbers in classified_undupl:
+                    # classified_tree_numbers = classified_heading['treeNumbers']
                     match = TreeNumberHelper.anyMatchesToDepth(
                         classified_tree_numbers,
                         real_tree_numbers,
@@ -304,42 +377,83 @@ class MedlineEvaluator:
                         is_fn = False
                         break
 
-                # print 'is FN: ' + str(is_fn)
-
                 fn += 1 if is_fn else 0
 
-            total_tp += tp
-            total_fp += fp
-            total_fn += fn
-
             f1_article = calcF1(tp, fp, fn)
+            f05_article = calcF05(tp, fp, fn)
+            precision = calcPrecision(tp, fp, fn)
+            recall = calcRecall(tp, fp, fn)
 
-            classified_uis_mean += len(classified_headings)
-            real_uis_mean += len(real_headings)
+            f1_mean += f1_article
+            f05_mean += f05_article
+            precision_mean += precision
+            recall_mean += recall
+
+            f1_binN = int(100*f1_article)
+            f1_dist[f1_binN] += 1
+
+            f05_binN = int(100*f05_article)
+            f05_dist[f05_binN] += 1
+
+            precision_binN = int(100*precision)
+            precision_dist[precision_binN] += 1
+
+            recall_binN = int(100*recall)
+            recall_dist[recall_binN] += 1
 
             f1_dataset += f1_article
+            f05_dataset += f05_article
+
+            classified_uis_mean += len(classified_undupl)
+            real_uis_mean += len(real_undupl)
 
         classified_uis_mean /= float(len(articles))
         real_uis_mean /= float(len(articles))
 
-        precision = calcPrecision(total_tp, total_fp, total_fn)
-        recall = calcRecall(total_tp, total_fp, total_fn)
-        # precision = float(total_tp) / float(total_tp + total_fp)
-        # recall = float(total_tp) / float(total_tp + total_fn)
-
-        f1_global = calcF1(total_tp, total_fp, total_fn)
         f1_dataset /= len(articles)
+        f05_dataset /= len(articles)
+
+        f1_mean /= float(n_articles)
+        f05_mean /= float(n_articles)
+        precision_mean /= float(n_articles)
+        recall_mean /= float(n_articles)
+
+        def median(dist):
+            prob_sum = 0
+            for valN, val in enumerate(dist):
+                prob_sum += val
+                if prob_sum >= 0.5:
+                    return 0.005*(valN + valN+1)
+            return 1
+
+
+        f1_dist = [float(val) / n_articles for val in f1_dist]
+        f05_dist = [float(val) / n_articles for val in f05_dist]
+        precision_dist = [float(val) / n_articles for val in precision_dist]
+        recall_dist = [float(val) / n_articles for val in recall_dist]
+
+        f1_median = median(f1_dist)
+        f05_median = median(f05_dist)
+        precision_median = median(precision_dist)
+        recall_median = median(recall_dist)
 
         return {
-            'tp': total_tp,
-            'fp': total_fp,
-            'fn': total_fn,
             'avgHeadings': real_uis_mean,
             'avgClassifiedHeadings': classified_uis_mean,
-            'precision': precision,
-            'recall': recall,
-            'f1_global': f1_global,
-            'f1_dataset': f1_dataset
+            'f1_dataset': f1_dataset,
+            'f05_dataset': f05_dataset,
+            'f1_mean': f1_mean,
+            'f05_mean': f05_mean,
+            'precision_mean': precision_mean,
+            'recall_mean': recall_mean,
+            'f1_median': f1_median,
+            'f05_median': f05_median,
+            'precision_median': precision_median,
+            'recall_median': recall_median,
+            'f1_dist': f1_dist,
+            'f05_dist': f05_dist,
+            'precision_dist': precision_dist,
+            'recall_dist': recall_dist
         }
 
 
@@ -351,7 +465,7 @@ class MedlineEvaluator:
             classified_headings = article['classifiedMeshHeadings']
             real_headings = article['annotatedMeshHeadings']
 
-    def _readMedline(self, medline_dir):
+    def _readMedline(self, medline_dir, only_major):
         medline_articles = []
 
         with ThreadPoolExecutor(max_workers=self._max_workers) as executor:
@@ -361,11 +475,14 @@ class MedlineEvaluator:
                 print 'processing directory ' + dirname + ' [' + str(dirN + 1) + ' of ' + str(len(dirs)) + ']'
                 # go through all the files in the directory
                 medline_files = os.listdir(os.path.join(medline_dir, dirname))
-                file_names = [os.path.join(medline_dir, dirname, medline_fname) for medline_fname in medline_files]
+                all_args = [
+                   (os.path.join(medline_dir, dirname, medline_fname), only_major)
+                    for medline_fname in medline_files
+                ]
 
                 start_msecs = time.time()*1000.0
 
-                article_batches = executor.map(self._readMedlineFiles, file_names)
+                article_batches = executor.map(self._readMedlineFiles, all_args)
 
                 for batch in article_batches:
                     medline_articles += batch
@@ -375,14 +492,62 @@ class MedlineEvaluator:
 
         return medline_articles
 
-    def _readMedlineFiles(self, file_name):
-        parser = MedlineFileParser(False, True)
+    def _readMedlineFiles(self, args):
+        file_name = args[0]
+        only_major = args[1]
+        parser = MedlineFileParser(only_major, True)
         parser.parse(file_name)
         articles = parser.getArticles()
         return articles
 
 
 class TreeNumberHelper:
+
+    @staticmethod
+    def removeDuplicates(headings, depth):
+        # filter the classified tree numbers
+        headings_undupl = []
+        for heading in headings:
+            heading_tree_numbers = heading['treeNumbers']
+
+            # filter the tree numbers
+            filtered_tree_numbers = []
+            taken_numbers = Set()
+            for tree_number in heading_tree_numbers:
+                tn_cut = TreeNumberHelper.cutTreeNumber(tree_number, depth)
+                if tn_cut not in taken_numbers:
+                    taken_numbers.add(tn_cut)
+                    filtered_tree_numbers.append(tn_cut)
+
+            # check if the filtered tree numbers are already in the headings
+            filtered_tree_numbers.sort()
+
+            one_tn_matches = False
+            for present_numbers in headings_undupl:
+                # we have a match if all the tree numbers are the same
+                if len(present_numbers) != len(filtered_tree_numbers):
+                    continue
+                all_match = True
+                for tnN, tn in enumerate(present_numbers):
+                    if tn != filtered_tree_numbers[tnN]:
+                        all_match = False
+                        break
+
+                if all_match:
+                    one_tn_matches = True
+                    break
+
+            if not one_tn_matches:
+                headings_undupl.append(filtered_tree_numbers)
+
+        return headings_undupl
+
+    @staticmethod
+    def cutTreeNumber(tree_number, depth):
+        if depth == 1:
+            return tree_number[0]
+        else:
+            return '.'.join(tree_number.split('.')[0:depth-1])
 
     @staticmethod
     def anyMatchesToDepth(tree_numbers1, tree_numbers2, depth):

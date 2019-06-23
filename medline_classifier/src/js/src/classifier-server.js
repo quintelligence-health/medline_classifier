@@ -34,6 +34,10 @@ initializeClassifier(classifierParam, function (e, classifier) {
         process.exit(1);
     }
 
+    if (args.port != null) {
+        settings.server.port = args.port;
+    }
+
     log.info('initializing the server');
     let server = new srv.StaticAndApiServer({
         settings: settings.server,
