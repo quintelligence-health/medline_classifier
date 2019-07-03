@@ -10,11 +10,31 @@ if (settings.classifier.bowPart == null) throw new Error('Parameter `bowPart` mi
 if (settings.classifier.classifier == null) throw new Error('Parameter `classifier` missing!');
 if (settings.classifier.filter == null) throw new Error('Parameter `filter` missing!');
 
+let blacklist = [
+    'Anatomy/Animal Structures',
+    'Anatomy/Plant Structures',
+    'Analytical, Diagnostic and Therapeutic Techniques and Equipment',
+    'Psychiatry and Psychology/Behavior and Behavior Mechanisms',
+    'Psychiatry and Psychology/Psychological Phenomena',
+    'Phenomena and Processes/Plant Physiological Phenomena',
+    'Phenomena and Processes/Mathematical Concepts',
+    'Disciplines and Occupations',
+    'Anthropology, Education, Sociology and Social Phenomena',
+    'Technology, Industry, Agriculture/Technology, Industry, and Agriculture',
+    'Technology, Industry, Agriculture/Non-Medical Public and Private Facilities',
+    'Humanities',
+    'Information Science',
+    'Named Groups',
+    'Health Care',
+    'Publication Characteristics',
+    'Geographicals'
+]
+
 
 function initializeClassifier(params, callback) {
     try {
         log.info('initializing classifier');
-        let classifier = new dmoz.Classifier(params);
+        let classifier = new dmoz.Classifier(params, blacklist);
         callback(undefined, classifier);
     } catch (e) {
         callback(e);
@@ -25,7 +45,8 @@ let classifierParam = {
     bow: settings.classifier.bow,
     bowPart: settings.classifier.bowPart,
     classifier: settings.classifier.classifier,
-    filter: settings.classifier.filter
+    filter: settings.classifier.filter,
+    blacklist: blacklist
 }
 
 initializeClassifier(classifierParam, function (e, classifier) {

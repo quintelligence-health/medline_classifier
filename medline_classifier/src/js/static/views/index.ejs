@@ -47,7 +47,7 @@
                                         <tr v-for="(category, categoryN) in categories">
                                             <th scope="row">{{ (categoryN+1) }}</th>
                                             <td>
-                                                <small>{{ category.category }}</small>
+                                                <small data-toggle="tooltip" data-placement="bottom" v-bind:title="category.tooltip">{{ category.category }}</small>
                                             </td>
                                             <td class="text-right">{{ category.weight | formatWeight }}</td>
                                         </tr>

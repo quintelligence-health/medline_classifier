@@ -298,8 +298,6 @@ class MedlineEvaluator:
         }
 
     def evalToDepth(self, articles, depth, wgt_cutoff=0.0):
-        n_articles = len(articles)
-
         f1_dataset = 0
         f05_dataset = 0
 
@@ -317,6 +315,7 @@ class MedlineEvaluator:
         precision_dist = [0 for _ in range(n_bins)]
         recall_dist = [0 for _ in range(n_bins)]
 
+        n_articles = 0
         for articleN, article in enumerate(articles):
             if articleN % 10000 == 1:
                 print 'processing article ' + str(articleN) + ', depth ' + str(depth) + ', wgt cutoff ' + str(wgt_cutoff)
@@ -333,8 +332,11 @@ class MedlineEvaluator:
             classified_undupl = TreeNumberHelper.removeDuplicates(classified_headings, depth)
             real_undupl = TreeNumberHelper.removeDuplicates(real_headings, depth)
 
-            # print '\n\n\n\nclassified: ' + str(classified_headings) + ', undupl: ' + str(classified_undupl)
-            # print '\n\n\n\nreal: ' + str(real_headings) + ', undupl: ' + str(real_undupl)
+            if len(real_undupl) == 0:
+                continue
+
+            # print '\n\n\n\nclassified: ' + str(classified_headings) + '\nundupl: ' + str(classified_undupl)
+            # print '\n\n\n\nreal: ' + str(real_headings) + '\nundupl: ' + str(real_undupl)
 
             # true positives and false positives
             for classified_tree_numbers in classified_undupl:
@@ -342,7 +344,7 @@ class MedlineEvaluator:
 
                 # check if the heading appears in the real headings
                 is_tp = False
-                for real_tree_numbers in real_headings:
+                for real_tree_numbers in real_undupl:
                     # real_tree_numbers = real_heading['treeNumbers']
 
                     match = TreeNumberHelper.anyMatchesToDepth(
@@ -350,6 +352,8 @@ class MedlineEvaluator:
                         real_tree_numbers,
                         depth
                     )
+
+                    # print 'matches: ' + str(match) + '\nclassified: ' + str(classified_tree_numbers) + '\nreal: ' + str(real_tree_numbers)
                     if match:
                         is_tp = True
                         break
@@ -379,6 +383,10 @@ class MedlineEvaluator:
 
                 fn += 1 if is_fn else 0
 
+            # if articleN >= 10:
+            #     print 'exiting'
+            #     exit(0)
+
             f1_article = calcF1(tp, fp, fn)
             f05_article = calcF05(tp, fp, fn)
             precision = calcPrecision(tp, fp, fn)
@@ -406,6 +414,8 @@ class MedlineEvaluator:
 
             classified_uis_mean += len(classified_undupl)
             real_uis_mean += len(real_undupl)
+
+            n_articles += 1
 
         classified_uis_mean /= float(len(articles))
         real_uis_mean /= float(len(articles))

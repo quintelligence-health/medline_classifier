@@ -813,9 +813,11 @@ def read_results(fname):
 
 
 
-dataset = '250'
-cutoff_depth_pr_map = read_results('data/eval2-' + dataset + '.json')
-suffix = '-' + dataset
+dataset = 'major'
+sample = 100000
+fname = 'data/eval2-' + dataset + ('-' + str(sample) if sample is not None else '') + '.json'
+cutoff_depth_pr_map = read_results(fname)
+suffix = '-' + dataset + ('-' + str(sample) if sample is not None else '')
 
 depths = Set()
 cutoffs = Set()

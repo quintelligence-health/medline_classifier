@@ -32,6 +32,18 @@ _argparser.add_argument(
     help="Indicates whether non-major topics should be ignored",
     action='store_true'
 )
+_argparser.add_argument(
+    "--sample",
+    help="Indicates whether non-major topics should be ignored",
+    required=False,
+    default="-1"
+)
+_argparser.add_argument(
+    "--dataset",
+    help="Indicates whether non-major topics should be ignored",
+    required=False,
+    default=""
+)
 _args = _argparser.parse_args()
 
 settings = None

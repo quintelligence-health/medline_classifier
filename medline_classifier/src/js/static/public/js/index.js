@@ -90,7 +90,13 @@
                     self._handleError('Oops, an error occurred! Please contact the administrator!');
                     return;
                 }
-                vue.categories = categories;
+                vue.categories = categories.map(function (category) {
+                    return {
+                        category: category.category,
+                        weight: category.weight,
+                        tooltip: category.fullCategories.join('<br />')
+                    }
+                });
             })
         } catch (e) {
             self._handleError(e);
