@@ -94,7 +94,7 @@
                     return {
                         category: category.category,
                         weight: category.weight,
-                        tooltip: category.fullCategories.join('<br />')
+                        explanation: category.fullCategories.join('\n')
                     }
                 });
             })

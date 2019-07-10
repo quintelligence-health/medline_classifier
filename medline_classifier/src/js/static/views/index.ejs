@@ -9,7 +9,7 @@
 
             <div id="page-wrapper" class="container d-none">
                 <div class="row">
-                    <div class="col col-md-6 offset-md-3">
+                    <div class="col col-md-8 offset-md-2">
                         <form>
                             <div class="form-group">
                                 <label for="input-text">Please enter text here:</label>
@@ -47,7 +47,19 @@
                                         <tr v-for="(category, categoryN) in categories">
                                             <th scope="row">{{ (categoryN+1) }}</th>
                                             <td>
-                                                <small data-toggle="tooltip" data-placement="bottom" v-bind:title="category.tooltip">{{ category.category }}</small>
+                                                <div>{{ category.category }}</div>
+                                                <div class="text-center">
+                                                    <a data-toggle="collapse" class="a-expand" v-bind:href="'#div-expand-' + categoryN">
+                                                        <i class="fas fa-angle-down"></i>
+                                                    </a>
+                                                </div>
+                                                <div>
+                                                    <div class="collapse" v-bind:id="'div-expand-' + categoryN">
+                                                        <div class="card card-body tiny">
+                                                            <small>{{ category.explanation }}</small>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </td>
                                             <td class="text-right">{{ category.weight | formatWeight }}</td>
                                         </tr>
@@ -63,5 +75,4 @@
         <!-- /#wrapper -->
         <% include partials/includejs %>
         <script type="text/javascript" src="js/index.js"></script>
-    </body>
 </html>

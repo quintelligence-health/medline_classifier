@@ -73,9 +73,11 @@ initializeClassifier(classifierParam, function (e, classifier) {
 
         let text = params.text;
         let maxCategories = params.maxCategories != null ?
-                params.maxCategories : 10;
+                params.maxCategories : 20;
+        let cutoffSimilarity = params.cutoffSimilarity != null ?
+                params.cutoffSimilarity : 0.0;
 
-        let result = classifier.classify(text, maxCategories);
+        let result = classifier.classify(text, maxCategories, cutoffSimilarity);
         callback(undefined, result);
     })
 

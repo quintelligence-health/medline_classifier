@@ -1,12 +1,5 @@
 #!/bin/bash
 
-# pid_dir=".pids-classifiers"
-# pid_file="$pid_dir/pids"
-
-# mkdir -p "$pid_dir"
-
-# echo '' > $pid_file
-
 for ((i=1;i<=24;i++)); do
     port=$((8100 + i))
 
@@ -14,12 +7,8 @@ for ((i=1;i<=24;i++)); do
 
     cd ../src/js/src
     node classifier-server.js $@ --port $port --conf config/config-all.json &
-    # classifier_pid=$!
-
-    # echo "classifier PID: $classifier_pid"
 
     cd ../../../bin
-    # echo "$classifier_pid" >> $pid_file
     
     sleep 1
 done
