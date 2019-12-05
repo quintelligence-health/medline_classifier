@@ -813,11 +813,12 @@ def read_results(fname):
 
 
 
-dataset = 'major'
-sample = 100000
-fname = 'data/eval2-' + dataset + ('-' + str(sample) if sample is not None else '') + '.json'
+dataset = 'all'
+# sample = 100000
+fname = 'data/eval2-dataset-nir-' + dataset + '.json'
+# fname = 'data/eval2-hand-' + dataset + ('-' + str(sample) if sample is not None else '') + '.json'
 cutoff_depth_pr_map = read_results(fname)
-suffix = '-' + dataset + ('-' + str(sample) if sample is not None else '')
+suffix = '-' + dataset
 
 depths = Set()
 cutoffs = Set()
@@ -886,12 +887,12 @@ def createHeatmap(key, file_name, file_suffix, x_vals, y_vals):
     fig = go.Figure(data=data, layout=layout) 
     plt = py.plot(fig, filename=file_name + file_suffix + '.svg')
 
-createHeatmap('f05_median', 'f05_median_V3', suffix, depths, cutoffs)
-createHeatmap('f05_dataset', 'f05_dataset_V3', suffix, depths, cutoffs)
-createHeatmap('precision_median', 'precision_median_V3', suffix, depths, cutoffs)
-createHeatmap('precision_mean', 'precision_mean_V3', suffix, depths, cutoffs)
-createHeatmap('recall_median', 'recall_median_V3', suffix, depths, cutoffs)
-createHeatmap('recall_mean', 'recall_mean_V3', suffix, depths, cutoffs)
-createHeatmap('f1_dataset', 'f1_dataset_V3', suffix, depths, cutoffs)
-createHeatmap('f1_median', 'f1_median_V3', suffix, depths, cutoffs)
+createHeatmap('f05_median', 'f05_median_hand', suffix, depths, cutoffs)
+createHeatmap('f05_dataset', 'f05_dataset_hand', suffix, depths, cutoffs)
+createHeatmap('precision_median', 'precision_median_hand', suffix, depths, cutoffs)
+createHeatmap('precision_mean', 'precision_mean_hand', suffix, depths, cutoffs)
+createHeatmap('recall_median', 'recall_median_hand', suffix, depths, cutoffs)
+createHeatmap('recall_mean', 'recall_mean_hand', suffix, depths, cutoffs)
+createHeatmap('f1_dataset', 'f1_dataset_hand', suffix, depths, cutoffs)
+createHeatmap('f1_median', 'f1_median_hand', suffix, depths, cutoffs)
 

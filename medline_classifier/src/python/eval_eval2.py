@@ -30,7 +30,7 @@ if __name__ == '__main__':
         print 'evaluating on a sample of size: ' + str(sample_size)
 
     mesh_path = settings['mesh_path']
-    classified_path = '/home/midas/data/eval/new-classified-' + dataset + '.json'
+    classified_path = '/home/midas/data/eval/hand/classified-dataset-nir-' + dataset + '.json'
 
     mesh_serialize_path = '/home/midas/storage/data/eval/temp/mesh.pkl'
 
@@ -71,7 +71,7 @@ if __name__ == '__main__':
 
     print 'score: ' + str(score_map)
 
-    fname_out = 'eval2-' + dataset + ('-' + str(sample_size) if sample_size is not None else '') + '.json'
+    fname_out = 'eval2-dataset-nir-' + dataset + ('-' + str(sample_size) if sample_size is not None else '') + '.json'
     with open('../../../scripts/data/' + fname_out, 'w') as f:
         json.dump(score_map, f, indent=4)
 

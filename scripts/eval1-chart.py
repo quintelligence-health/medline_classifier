@@ -34,8 +34,8 @@ def plot(results, key, suffix):
 #     plot(results, 'f1_global', key)
 #     plot(results, 'f1_dataset', key)
 
-dataset = 'major'
-fname = 'data/eval1-' + dataset + '.json'
+dataset = 'all'
+fname = 'data/eval1-dataset-nir-' + dataset + '.json'
 with open(fname, 'r') as f:
     results = json.load(f)
 

@@ -19,8 +19,8 @@ def deserialize(fname):
 if __name__ == '__main__':
     mesh_path = settings['mesh_path']
 
-    classified_path = '/home/midas/data/eval/new-classified-major.json'
-    is_only_major = True
+    classified_path = '/home/midas/data/eval/hand/classified-dataset-nir.json'
+    is_only_major = False
 
     mesh_serialize_path = '/home/midas/storage/data/eval/temp/mesh.pkl'
 
