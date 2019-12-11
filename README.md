@@ -1,7 +1,7 @@
 QMIDAS MeSH Classifier
 ======
 
-This is an automated classifier designed to assign a number of MeSH headings to a  allowing for the easy manipulation and visualisation of the different aspects of MEDLINE data, including the MeSH Heading descriptors. . 
+This is an automated classifier designed to assign a number of MeSH headings to a  allowing for the easy manipulation and visualisation of the different aspects of MEDLINE data, including the MeSH Heading descriptors. We are releasing here a novel automated classifier that is able to suggest the categories of the not yet annotated articles. It learns over the part of the MEDLINE dataset that is annotated with MeSH and is able to suggest categories to the submitted text snippets. These snippets can be abstracts that do not yet include MESH classification, medical summary records or even health-related news articles.  
 
 ![Screenshot MeSH Classifier](https://github.com/joaopitacosta/images/blob/master/medlinec2.png)
 
