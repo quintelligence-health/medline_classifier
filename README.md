@@ -3,6 +3,8 @@ QMIDAS MeSH Classifier
 
 This is an automated classifier designed to assign a number of MeSH headings to a  allowing for the easy manipulation and visualisation of the different aspects of MEDLINE data, including the MeSH Heading descriptors. . 
 
+![Screenshot MeSH Classifier](https://github.com/joaopitacosta/images/blob/master/medlinec2.png)
+
 ## Documentation
 
 - [Main homepage](http://midas.quintelligence.com/medline_demos)
@@ -10,7 +12,7 @@ This is an automated classifier designed to assign a number of MeSH headings to 
 - [Examples, user stories and demonstrations](http://midas.quintelligence.com/medline_demos)
 - [Architecture](https://github.com/quintelligence-health/medline_classifier/wiki)
 - [User Guide](https://github.com/quintelligence-health/medline_classifier/wiki)
-- [Reference research paper](https://ailab.ijs.si/dunja/SiKDD2019/Papers/PitaCosta_Final.pdf)
+- [Reference research paper](https://ailab.ijs.si/dunja/SiKDD2018/Papers/PitaCosta.pdf)
 
 ## Acknowledgments
 
