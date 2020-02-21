@@ -17,20 +17,13 @@ def evalToDepth((wgt_cutoff, depth)):
     return score
 
 if __name__ == '__main__':
-    dataset = settings['dataset']#'250'
     sample_size = int(settings['sample']) if 'sample' in settings is not None and int(settings['sample']) > 0 else None
-
-    if dataset == '':
-        print 'please specify parameter `dataset` (either `major` or `250`)'
-        exit(1)
-
-    print 'using dataset: ' + dataset
 
     if sample_size is not None:
         print 'evaluating on a sample of size: ' + str(sample_size)
 
     mesh_path = settings['mesh_path']
-    classified_path = '/home/midas/data/eval/hand/classified-dataset-nir-' + dataset + '.json'
+    classified_path = '../../data/classified.json'
 
     mesh_serialize_path = '/home/midas/storage/data/eval/temp/mesh.pkl'
 
@@ -71,8 +64,7 @@ if __name__ == '__main__':
 
     print 'score: ' + str(score_map)
 
-    fname_out = 'eval2-dataset-nir-' + dataset + ('-' + str(sample_size) if sample_size is not None else '') + '.json'
-    with open('../../../scripts/data/' + fname_out, 'w') as f:
+    with open('../../data/results-eval2.json', 'w') as f:
         json.dump(score_map, f, indent=4)
 
     print 'done'

@@ -813,12 +813,8 @@ def read_results(fname):
 
 
 
-dataset = 'all'
-# sample = 100000
-fname = 'data/eval2-dataset-nir-' + dataset + '.json'
-# fname = 'data/eval2-hand-' + dataset + ('-' + str(sample) if sample is not None else '') + '.json'
+fname = '../medline_classifier/data/results-eval2.json'
 cutoff_depth_pr_map = read_results(fname)
-suffix = '-' + dataset
 
 depths = Set()
 cutoffs = Set()
@@ -838,11 +834,11 @@ cutoffs = [cutoff for cutoff in cutoffs]
 depths.sort()
 cutoffs.sort()
 
-def createHeatmap(key, file_name, file_suffix, x_vals, y_vals):
+def createHeatmap(key, file_name, x_vals, y_vals):
     print 'creating heatmap `' + file_name + '`'
     heatmap = []
 
-    with open(file_name + file_suffix + '.csv', 'w') as f:
+    with open(file_name + '.csv', 'w') as f:
         f.write('similarity,' + (','.join([str(depth) for depth in depths])))
 
         for rowN, cutoff in enumerate(cutoffs):
@@ -885,14 +881,14 @@ def createHeatmap(key, file_name, file_suffix, x_vals, y_vals):
         )
     )
     fig = go.Figure(data=data, layout=layout) 
-    plt = py.plot(fig, filename=file_name + file_suffix + '.svg')
+    plt = py.plot(fig, filename=file_name + '.svg')
 
-createHeatmap('f05_median', 'f05_median_hand', suffix, depths, cutoffs)
-createHeatmap('f05_dataset', 'f05_dataset_hand', suffix, depths, cutoffs)
-createHeatmap('precision_median', 'precision_median_hand', suffix, depths, cutoffs)
-createHeatmap('precision_mean', 'precision_mean_hand', suffix, depths, cutoffs)
-createHeatmap('recall_median', 'recall_median_hand', suffix, depths, cutoffs)
-createHeatmap('recall_mean', 'recall_mean_hand', suffix, depths, cutoffs)
-createHeatmap('f1_dataset', 'f1_dataset_hand', suffix, depths, cutoffs)
-createHeatmap('f1_median', 'f1_median_hand', suffix, depths, cutoffs)
+createHeatmap('f05_median', 'f05_median_hand', depths, cutoffs)
+createHeatmap('f05_dataset', 'f05_dataset_hand', depths, cutoffs)
+createHeatmap('precision_median', 'precision_median_hand', depths, cutoffs)
+createHeatmap('precision_mean', 'precision_mean_hand', depths, cutoffs)
+createHeatmap('recall_median', 'recall_median_hand', depths, cutoffs)
+createHeatmap('recall_mean', 'recall_mean_hand', depths, cutoffs)
+createHeatmap('f1_dataset', 'f1_dataset_hand', depths, cutoffs)
+createHeatmap('f1_median', 'f1_median_hand', depths, cutoffs)
 

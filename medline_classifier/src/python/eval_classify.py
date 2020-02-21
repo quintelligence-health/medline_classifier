@@ -40,8 +40,8 @@ if __name__ == '__main__':
     medline_path_new = settings['medline_path']
     medline_path_old = settings['medline_path_old']
     unannotated_path = '/home/midas/data/eval/old-unannotated.json'
-    eval_candidate_path = '/home/midas/data/eval/hand/annotated-dataset-nir.json'
-    classified_path = '/home/midas/data/eval/hand/classified-nir-2-all.json'
+    eval_candidate_path = '../../data/preproc2-input.json'
+    classified_path = '../../data/classified.json'
 
     endpoint_url = 'https://qmidas.quintelligence.com/classify-mesh/api/classify'
     n_categories = 250

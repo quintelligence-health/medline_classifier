@@ -12,7 +12,7 @@ if __name__ == '__main__':
     dataset = 'all'
 
     mesh_path = settings['mesh_path']
-    classified_path = '/home/midas/data/eval/hand/classified-dataset-nir-' + dataset + '.json'
+    classified_path = '../../data/classified.json'
 
     mesh_serialize_path = '/home/midas/storage/data/eval/temp/mesh.pkl'
 
@@ -42,7 +42,7 @@ if __name__ == '__main__':
 
     print 'score: ' + str(scores)
 
-    with open('eval1-dataset-nir-' + dataset + '.json', 'w') as f:
+    with open('../../data/results-eval1.json', 'w') as f:
         json.dump(scores, f, indent=4)
 
     print 'done'
