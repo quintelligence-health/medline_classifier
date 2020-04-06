@@ -15,6 +15,6 @@
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "express-graceful-exit": "^0.4.1",
-    "minimist": "^1.2.0"
+    "minimist": "^1.2.3"
   }
 }
